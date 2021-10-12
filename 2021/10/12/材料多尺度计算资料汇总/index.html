@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="description" content="Note:最近在浏览博客时发现了刘锦程收集的关于第一性原理的计算博客，突然感觉如获至宝，担心网站挂掉，所以自己整理备份了一份，原文网址：http:&#x2F;&#x2F;blog.wangruixing.cn&#x2F;2019&#x2F;05&#x2F;01&#x2F;resources&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="材料多尺度计算资料汇总">
+<meta property="og:url" content="https://june976.github.io/2021/10/12/%E6%9D%90%E6%96%99%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%AE%A1%E7%AE%97%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/index.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="Note:最近在浏览博客时发现了刘锦程收集的关于第一性原理的计算博客，突然感觉如获至宝，担心网站挂掉，所以自己整理备份了一份，原文网址：http:&#x2F;&#x2F;blog.wangruixing.cn&#x2F;2019&#x2F;05&#x2F;01&#x2F;resources&#x2F;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-12T13:22:52.000Z">
+<meta property="article:modified_time" content="2021-10-12T13:40:34.305Z">
+<meta property="article:author" content="Luo Jun">
+<meta property="article:tag" content="Linux vasp dft code python3 C C++ shell">
+<meta name="twitter:card" content="summary"><title>材料多尺度计算资料汇总 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2021/10/12/%E6%9D%90%E6%96%99%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%AE%A1%E7%AE%97%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">First Principle and Density Functional Theory</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">材料多尺度计算资料汇总</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2021-10-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2021-10-12</span></span></div></header><div class="post-body"><p>Note:最近在浏览博客时发现了刘锦程收集的关于第一性原理的计算博客，突然感觉如获至宝，担心网站挂掉，所以自己整理备份了一份，原文网址：<span class="exturl"><a class="exturl__link"   href="http://blog.wangruixing.cn/2019/05/01/resources/"  title="http://blog.wangruixing.cn/2019/05/01/resources/">http://blog.wangruixing.cn/2019/05/01/resources/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<span id="more"></span>
+
+        <h1 id="一、晶体结构数据库"   >
+          <a href="#一、晶体结构数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、晶体结构数据库" class="headerlink" title="一、晶体结构数据库"></a>一、晶体结构数据库</h1>
+      
+        <h3 id="（1）ICSD-–-the-Inorganic-Crystal-Structure-Database"   >
+          <a href="#（1）ICSD-–-the-Inorganic-Crystal-Structure-Database" class="heading-link"><i class="fas fa-link"></i></a><a href="#（1）ICSD-–-the-Inorganic-Crystal-Structure-Database" class="headerlink" title="（1）ICSD – the Inorganic Crystal Structure Database"></a>（1）ICSD – the Inorganic Crystal Structure Database</h3>
+      
+        <h5 id="无机晶体数据库"   >
+          <a href="#无机晶体数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#无机晶体数据库" class="headerlink" title="无机晶体数据库"></a>无机晶体数据库</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="https://icsd.products.fiz-karlsruhe.de/" >https://icsd.products.fiz-karlsruhe.de/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（2）CCDC-–-The-Cambridge-Crystallographic-Data-Centre"   >
+          <a href="#（2）CCDC-–-The-Cambridge-Crystallographic-Data-Centre" class="heading-link"><i class="fas fa-link"></i></a><a href="#（2）CCDC-–-The-Cambridge-Crystallographic-Data-Centre" class="headerlink" title="（2）CCDC – The Cambridge Crystallographic Data Centre"></a>（2）CCDC – The Cambridge Crystallographic Data Centre</h3>
+      
+        <h5 id="剑桥晶体数据库"   >
+          <a href="#剑桥晶体数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#剑桥晶体数据库" class="headerlink" title="剑桥晶体数据库"></a>剑桥晶体数据库</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="https://www.ccdc.cam.ac.uk/" >https://www.ccdc.cam.ac.uk/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（3）-COD-–-Crystallography-Open-Database"   >
+          <a href="#（3）-COD-–-Crystallography-Open-Database" class="heading-link"><i class="fas fa-link"></i></a><a href="#（3）-COD-–-Crystallography-Open-Database" class="headerlink" title="（3） COD – Crystallography Open Database"></a>（3） COD – Crystallography Open Database</h3>
+      
+        <h5 id="开放晶体结构数据库"   >
+          <a href="#开放晶体结构数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#开放晶体结构数据库" class="headerlink" title="开放晶体结构数据库"></a>开放晶体结构数据库</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="http://www.crystallography.net/cod/" >http://www.crystallography.net/cod/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（4）-Materials-Project"   >
+          <a href="#（4）-Materials-Project" class="heading-link"><i class="fas fa-link"></i></a><a href="#（4）-Materials-Project" class="headerlink" title="（4） Materials Project"></a>（4） Materials Project</h3>
+      
+        <h5 id="MP元老级数据库"   >
+          <a href="#MP元老级数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#MP元老级数据库" class="headerlink" title="MP元老级数据库"></a>MP元老级数据库</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="https://materialsproject.org/" >https://materialsproject.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（5）-AMCSD-–-American-Mineralogist-Crystal-Structure-Database"   >
+          <a href="#（5）-AMCSD-–-American-Mineralogist-Crystal-Structure-Database" class="heading-link"><i class="fas fa-link"></i></a><a href="#（5）-AMCSD-–-American-Mineralogist-Crystal-Structure-Database" class="headerlink" title="（5） AMCSD – American Mineralogist Crystal Structure Database"></a>（5） AMCSD – American Mineralogist Crystal Structure Database</h3>
+      
+        <h5 id="美国矿物质晶体结构数据库"   >
+          <a href="#美国矿物质晶体结构数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#美国矿物质晶体结构数据库" class="headerlink" title="美国矿物质晶体结构数据库"></a>美国矿物质晶体结构数据库</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="http://rruff.geo.arizona.edu/AMS/amcsd.php" >http://rruff.geo.arizona.edu/AMS/amcsd.php</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（6）AFLOW：Automatic-FLOW-for-Materials-Discovery"   >
+          <a href="#（6）AFLOW：Automatic-FLOW-for-Materials-Discovery" class="heading-link"><i class="fas fa-link"></i></a><a href="#（6）AFLOW：Automatic-FLOW-for-Materials-Discovery" class="headerlink" title="（6）AFLOW：Automatic-FLOW for Materials Discovery"></a>（6）AFLOW：Automatic-FLOW for Materials Discovery</h3>
+      
+        <h5 id="材料发掘"   >
+          <a href="#材料发掘" class="heading-link"><i class="fas fa-link"></i></a><a href="#材料发掘" class="headerlink" title="材料发掘"></a>材料发掘</h5>
+      <p><span class="exturl"><a class="exturl__link"   href="http://aflowlib.org/" >http://aflowlib.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（7）拓扑材料"   >
+          <a href="#（7）拓扑材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#（7）拓扑材料" class="headerlink" title="（7）拓扑材料"></a>（7）拓扑材料</h3>
+      
+        <h5 id="Materiae-：http-materiae-iphy-ac-cn"   >
+          <a href="#Materiae-：http-materiae-iphy-ac-cn" class="heading-link"><i class="fas fa-link"></i></a><a href="#Materiae-：http-materiae-iphy-ac-cn" class="headerlink" title="Materiae ：http://materiae.iphy.ac.cn/#/"></a>Materiae ：<span class="exturl"><a class="exturl__link"   href="http://materiae.iphy.ac.cn/#/" >http://materiae.iphy.ac.cn/#/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h5 id="Topological-Materials-Arsenal：https-ccmp-nju-edu-cn"   >
+          <a href="#Topological-Materials-Arsenal：https-ccmp-nju-edu-cn" class="heading-link"><i class="fas fa-link"></i></a><a href="#Topological-Materials-Arsenal：https-ccmp-nju-edu-cn" class="headerlink" title="Topological Materials Arsenal：https://ccmp.nju.edu.cn/"></a>Topological Materials Arsenal：<span class="exturl"><a class="exturl__link"   href="https://topgen.nju.edu.cn/" >https://ccmp.nju.edu.cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h5 id="Topological-Materials-Database-http-topologicalquantumchemistry-org"   >
+          <a href="#Topological-Materials-Database-http-topologicalquantumchemistry-org" class="heading-link"><i class="fas fa-link"></i></a><a href="#Topological-Materials-Database-http-topologicalquantumchemistry-org" class="headerlink" title="Topological Materials Database: http://topologicalquantumchemistry.org/#/"></a>Topological Materials Database: <span class="exturl"><a class="exturl__link"   href="https://topologicalquantumchemistry.org/#/" >http://topologicalquantumchemistry.org/#/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h3 id="（8）二维材料"   >
+          <a href="#（8）二维材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#（8）二维材料" class="headerlink" title="（8）二维材料"></a>（8）二维材料</h3>
+      
+        <h5 id="Materials-Cloud：https-www-materialscloud-org-discover-2dstructures-dashboard-ptable"   >
+          <a href="#Materials-Cloud：https-www-materialscloud-org-discover-2dstructures-dashboard-ptable" class="heading-link"><i class="fas fa-link"></i></a><a href="#Materials-Cloud：https-www-materialscloud-org-discover-2dstructures-dashboard-ptable" class="headerlink" title="Materials Cloud：https://www.materialscloud.org/discover/2dstructures/dashboard/ptable"></a>Materials Cloud：<span class="exturl"><a class="exturl__link"   href="https://www.materialscloud.org/discover/2dstructures/dashboard/ptable" >https://www.materialscloud.org/discover/2dstructures/dashboard/ptable</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h5 id="2D-Materials：https-materialsweb-org"   >
+          <a href="#2D-Materials：https-materialsweb-org" class="heading-link"><i class="fas fa-link"></i></a><a href="#2D-Materials：https-materialsweb-org" class="headerlink" title="2D Materials：https://materialsweb.org/"></a>2D Materials：<span class="exturl"><a class="exturl__link"   href="https://materialsweb.org/" >https://materialsweb.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h3 id="（9）超导材料"   >
+          <a href="#（9）超导材料" class="heading-link"><i class="fas fa-link"></i></a><a href="#（9）超导材料" class="headerlink" title="（9）超导材料"></a>（9）超导材料</h3>
+      
+        <h5 id="第I类超导体：http-www-superconductors-org-Type1-htm"   >
+          <a href="#第I类超导体：http-www-superconductors-org-Type1-htm" class="heading-link"><i class="fas fa-link"></i></a><a href="#第I类超导体：http-www-superconductors-org-Type1-htm" class="headerlink" title="第I类超导体：http://www.superconductors.org/Type1.htm"></a>第I类超导体：<span class="exturl"><a class="exturl__link"   href="http://www.superconductors.org/Type1.htm" >http://www.superconductors.org/Type1.htm</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h5 id="第II类超导体：http-www-superconductors-org-Type2-htm"   >
+          <a href="#第II类超导体：http-www-superconductors-org-Type2-htm" class="heading-link"><i class="fas fa-link"></i></a><a href="#第II类超导体：http-www-superconductors-org-Type2-htm" class="headerlink" title="第II类超导体：http://www.superconductors.org/Type2.htm"></a>第II类超导体：<span class="exturl"><a class="exturl__link"   href="http://www.superconductors.org/Type2.htm" >http://www.superconductors.org/Type2.htm</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h3 id="（10）磁结构数据库"   >
+          <a href="#（10）磁结构数据库" class="heading-link"><i class="fas fa-link"></i></a><a href="#（10）磁结构数据库" class="headerlink" title="（10）磁结构数据库"></a>（10）磁结构数据库</h3>
+      
+        <h5 id="MAGNDATA-http-webbdcrista1-ehu-es-magndata-index-php-show-db-1"   >
+          <a href="#MAGNDATA-http-webbdcrista1-ehu-es-magndata-index-php-show-db-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#MAGNDATA-http-webbdcrista1-ehu-es-magndata-index-php-show-db-1" class="headerlink" title="MAGNDATA: http://webbdcrista1.ehu.es/magndata/index.php?show_db=1"></a>MAGNDATA: <span class="exturl"><a class="exturl__link"   href="http://webbdcrista1.ehu.es/magndata/index.php?show_db=1" >http://webbdcrista1.ehu.es/magndata/index.php?show_db=1</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></h5>
+      
+        <h1 id="二、相关第一性原理计算程序主页"   >
+          <a href="#二、相关第一性原理计算程序主页" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、相关第一性原理计算程序主页" class="headerlink" title="二、相关第一性原理计算程序主页"></a>二、相关第一性原理计算程序主页</h1>
+      <ul>
+<li><p>VASP: Vienna Ab-initio Simulation Package主页：<span class="exturl"><a class="exturl__link"   href="https://www.vasp.at/" >www.vasp.at</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>VASP wiki：<span class="exturl"><a class="exturl__link"   href="https://www.vasp.at/wiki/index.php/The_VASP_Manual" >www.vasp.at/wiki/index.php/The_VASP_Manual</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>Quantum espresso 主页：<span class="exturl"><a class="exturl__link"   href="https://www.quantum-espresso.org/" >www.quantum-espresso.org</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>abinit主页：<span class="exturl"><a class="exturl__link"   href="https://www.abinit.org/" >www.abinit.org</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>Castep主页：<span class="exturl"><a class="exturl__link"   href="http://www.castep.org/" >www.castep.org</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>VESTA：<span class="exturl"><a class="exturl__link"   href="http://jp-minerals.org/vesta/en/" >http://jp-minerals.org/vesta/en/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>VASPKIT：<span class="exturl"><a class="exturl__link"   href="https://vaspkit.com/#" >vaspkit.com/#</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>VTST脚本库：<span class="exturl"><a class="exturl__link"   href="https://theory.cm.utexas.edu/vtsttools/" >https://theory.cm.utexas.edu/vtsttools/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>p4vasp：<span class="exturl"><a class="exturl__link"   href="https://github.com/orest-d/p4vasp" >https://github.com/orest-d/p4vasp</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>phonopy：<span class="exturl"><a class="exturl__link"   href="https://phonopy.github.io/phonopy/#" >https://phonopy.github.io/phonopy/#</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>Pymatgen (Python Materials Genomics) ：<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/#" >https://pymatgen.org/#</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+</ul>
+<ul>
+<li><p>Lobster：<span class="exturl"><a class="exturl__link"   href="http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=1" >http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=1</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>BoltzTraP2：<span class="exturl"><a class="exturl__link"   href="https://gitlab.com/sousaw/BoltzTraP2" >https://gitlab.com/sousaw/BoltzTraP2</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+</ul>
+
+        <h1 id="三、学习资料"   >
+          <a href="#三、学习资料" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、学习资料" class="headerlink" title="三、学习资料"></a>三、学习资料</h1>
+      
+        <h3 id="（1）最好的中文资料：大师兄科研网"   >
+          <a href="#（1）最好的中文资料：大师兄科研网" class="heading-link"><i class="fas fa-link"></i></a><a href="#（1）最好的中文资料：大师兄科研网" class="headerlink" title="（1）最好的中文资料：大师兄科研网"></a>（1）最好的中文资料：大师兄科研网</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="https://www.bigbrosci.com/" >http://www.bigbrosci.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（2）VASP-编译方法："   >
+          <a href="#（2）VASP-编译方法：" class="heading-link"><i class="fas fa-link"></i></a><a href="#（2）VASP-编译方法：" class="headerlink" title="（2）VASP 编译方法："></a>（2）VASP 编译方法：</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="http://sobereva.com/455" >http://sobereva.com/455</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/p/409652954" >https://zhuanlan.zhihu.com/p/409652954</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/p/270399903" >https://zhuanlan.zhihu.com/p/270399903</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（3）VASP-固定基矢优化结构的方法"   >
+          <a href="#（3）VASP-固定基矢优化结构的方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#（3）VASP-固定基矢优化结构的方法" class="headerlink" title="（3）VASP 固定基矢优化结构的方法"></a>（3）VASP 固定基矢优化结构的方法</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="http://bbs.keinsci.com/thread-13114-1-1.html" >http://bbs.keinsci.com/thread-13114-1-1.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（4）LAMMPS学习资料"   >
+          <a href="#（4）LAMMPS学习资料" class="heading-link"><i class="fas fa-link"></i></a><a href="#（4）LAMMPS学习资料" class="headerlink" title="（4）LAMMPS学习资料"></a>（4）LAMMPS学习资料</h3>
+      <ul>
+<li>lammps官网：<span class="exturl"><a class="exturl__link"   href="https://www.lammps.org/" >https://www.lammps.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>lammps官方mannual：<span class="exturl"><a class="exturl__link"   href="https://docs.lammps.org/Manual.html#" >https://docs.lammps.org/Manual.html#</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>LAMMPS中文站：<span class="exturl"><a class="exturl__link"   href="https://www.lammps.org.cn/" >https://www.lammps.org.cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+
+        <h1 id="四、第一性原理计算相关博文专栏："   >
+          <a href="#四、第一性原理计算相关博文专栏：" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、第一性原理计算相关博文专栏：" class="headerlink" title="四、第一性原理计算相关博文专栏："></a>四、第一性原理计算相关博文专栏：</h1>
+      <ul>
+<li><p>学术之友微信公众号和知乎专栏：<span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/p/270399903" >https://zhuanlan.zhihu.com/gangtangdft</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>CP2k知乎专栏：<span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/cp2k-tutorial" >https://zhuanlan.zhihu.com/cp2k-tutorial</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>一个人就是一个叠加态（Li pai）：<span class="exturl"><a class="exturl__link"   href="https://www.zhihu.com/people/mu-fu-shan-lu" >https://www.zhihu.com/people/mu-fu-shan-lu</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>凝聚态物理（ruichun xiao）：<span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/XRC0808087" >http://blog.sciencenet.cn/u/XRC0808087</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>第一性原理（Pengfei Liu）: <span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/pfliu89" >http://blog.sciencenet.cn/u/pfliu89</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>第一性原理（zhaofu zhang）: <span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/zhangfrank" >http://blog.sciencenet.cn/u/zhangfrank</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>第一性原理（xiaoxia yu）：<span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/yxx554243496" >http://blog.sciencenet.cn/u/yxx554243496</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>计算（zhiqiang zhao）：<span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/BraveZhao" >http://blog.sciencenet.cn/u/BraveZhao</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>VASP（lingju guo）：<span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/guolingju" >http://blog.sciencenet.cn/u/guolingju</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p><strong>世事如棋（刘锦程）</strong>：<span class="exturl"><a class="exturl__link"   href="http://blog.wangruixing.cn/" >http://blog.wangruixing.cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p><strong>VASP计算博客（chempeng）</strong>：<span class="exturl"><a class="exturl__link"   href="https://chempeng.github.io/" >https://chempeng.github.io/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>物理性能计算（叶小球）：<span class="exturl"><a class="exturl__link"   href="http://blog.sciencenet.cn/u/xiaoqiugood" >http://blog.sciencenet.cn/u/xiaoqiugood</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>vasp脚本（Nan Xu github）：<span class="exturl"><a class="exturl__link"   href="https://github.com/tamaswells" >https://github.com/tamaswells</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>能带反折叠（QijingZheng github）：<span class="exturl"><a class="exturl__link"   href="https://github.com/QijingZheng" >https://github.com/QijingZheng</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>Qijing Zheng的博客：<span class="exturl"><a class="exturl__link"   href="http://staff.ustc.edu.cn/~zqj/" >http://staff.ustc.edu.cn/~zqj/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>vasp脚本（Chenists github）：<span class="exturl"><a class="exturl__link"   href="https://github.com/Chenists/VASP" >https://github.com/Chenists/VASP</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>ChengCheng Xiao blog：<span class="exturl"><a class="exturl__link"   href="https://chengcheng-xiao.github.io/" >https://chengcheng-xiao.github.io/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>vasp脚本（ShaoZhengjiang github）：<span class="exturl"><a class="exturl__link"   href="https://chengcheng-xiao.github.io/" >https://github.com/PytLab</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+</ul>
+
+        <h1 id="五、量子化学学习网站："   >
+          <a href="#五、量子化学学习网站：" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、量子化学学习网站：" class="headerlink" title="五、量子化学学习网站："></a>五、量子化学学习网站：</h1>
+      
+        <h3 id="（1）思想家公社的门口"   >
+          <a href="#（1）思想家公社的门口" class="heading-link"><i class="fas fa-link"></i></a><a href="#（1）思想家公社的门口" class="headerlink" title="（1）思想家公社的门口:"></a>（1）思想家公社的门口:</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="http://sobereva.com/" >http://sobereva.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（2）谈谈学量子化学如何正确地入门"   >
+          <a href="#（2）谈谈学量子化学如何正确地入门" class="heading-link"><i class="fas fa-link"></i></a><a href="#（2）谈谈学量子化学如何正确地入门" class="headerlink" title="（2）谈谈学量子化学如何正确地入门:"></a>（2）谈谈学量子化学如何正确地入门:</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="http://sobereva.com/355" >http://sobereva.com/355</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h3 id="（3）计算化学公社论坛："   >
+          <a href="#（3）计算化学公社论坛：" class="heading-link"><i class="fas fa-link"></i></a><a href="#（3）计算化学公社论坛：" class="headerlink" title="（3）计算化学公社论坛："></a>（3）计算化学公社论坛：</h3>
+      <p><span class="exturl"><a class="exturl__link"   href="http://bbs.keinsci.com/forum.php" >http://bbs.keinsci.com/forum.php</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+
+        <h1 id="六、补充内容"   >
+          <a href="#六、补充内容" class="heading-link"><i class="fas fa-link"></i></a><a href="#六、补充内容" class="headerlink" title="六、补充内容"></a>六、补充内容</h1>
+      <ul>
+<li><p>单位转化：<br><span class="exturl"><a class="exturl__link"   href="http://bbs.keinsci.com/forum.php" >http://www.colby.edu/chemistry/PChem/Hartree.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link"   href="http://bbs.keinsci.com/forum.php" >https://www.unitconverters.net/length-converter.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>空间群对称性和其布里渊区的信息：<span class="exturl"><a class="exturl__link"   href="http://img.chem.ucl.ac.uk/sgp/large/sgp.htm" >http://cryst.ehu.es/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>高分辨空间群：<span class="exturl"><a class="exturl__link"   href="http://img.chem.ucl.ac.uk/sgp/large/sgp.htm" >http://img.chem.ucl.ac.uk/sgp/large/sgp.htm</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>空间群的k矢量和布里渊区：<span class="exturl"><a class="exturl__link"   href="http://img.chem.ucl.ac.uk/sgp/large/sgp.htm" >http://www.cryst.ehu.es/cryst/get_kvec.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>根据晶格文件自动寻找k点：<span class="exturl"><a class="exturl__link"   href="https://www.materialscloud.org/work/tools/seekpath" >https://www.materialscloud.org/work/tools/seekpath</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+<li><p>QuantumATK教程：<span class="exturl"><a class="exturl__link"   href="https://docs.quantumatk.com/index.html" >https://docs.quantumatk.com/index.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Luo Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2021/10/12/%E6%9D%90%E6%96%99%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%AE%A1%E7%AE%97%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/">https://june976.github.io/2021/10/12/%E6%9D%90%E6%96%99%E5%A4%9A%E5%B0%BA%E5%BA%A6%E8%AE%A1%E7%AE%97%E8%B5%84%E6%96%99%E6%B1%87%E6%80%BB/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">Buy me a coffee</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2021/09/26/matlab%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95-%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"><span class="paginator-prev__text">matlab实现机器学习算法-回归分析</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">
+          一、晶体结构数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89ICSD-%E2%80%93-the-Inorganic-Crystal-Structure-Database"><span class="toc-number">1.0.1.</span> <span class="toc-text">
+          （1）ICSD – the Inorganic Crystal Structure Database</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E6%9C%BA%E6%99%B6%E4%BD%93%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text">
+          无机晶体数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89CCDC-%E2%80%93-The-Cambridge-Crystallographic-Data-Centre"><span class="toc-number">1.0.2.</span> <span class="toc-text">
+          （2）CCDC – The Cambridge Crystallographic Data Centre</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%91%E6%A1%A5%E6%99%B6%E4%BD%93%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.2.0.1.</span> <span class="toc-text">
+          剑桥晶体数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-COD-%E2%80%93-Crystallography-Open-Database"><span class="toc-number">1.0.3.</span> <span class="toc-text">
+          （3） COD – Crystallography Open Database</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.3.0.1.</span> <span class="toc-text">
+          开放晶体结构数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89-Materials-Project"><span class="toc-number">1.0.4.</span> <span class="toc-text">
+          （4） Materials Project</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MP%E5%85%83%E8%80%81%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.4.0.1.</span> <span class="toc-text">
+          MP元老级数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%885%EF%BC%89-AMCSD-%E2%80%93-American-Mineralogist-Crystal-Structure-Database"><span class="toc-number">1.0.5.</span> <span class="toc-text">
+          （5） AMCSD – American Mineralogist Crystal Structure Database</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BE%8E%E5%9B%BD%E7%9F%BF%E7%89%A9%E8%B4%A8%E6%99%B6%E4%BD%93%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.5.0.1.</span> <span class="toc-text">
+          美国矿物质晶体结构数据库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%886%EF%BC%89AFLOW%EF%BC%9AAutomatic-FLOW-for-Materials-Discovery"><span class="toc-number">1.0.6.</span> <span class="toc-text">
+          （6）AFLOW：Automatic-FLOW for Materials Discovery</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%90%E6%96%99%E5%8F%91%E6%8E%98"><span class="toc-number">1.0.6.0.1.</span> <span class="toc-text">
+          材料发掘</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%887%EF%BC%89%E6%8B%93%E6%89%91%E6%9D%90%E6%96%99"><span class="toc-number">1.0.7.</span> <span class="toc-text">
+          （7）拓扑材料</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Materiae-%EF%BC%9Ahttp-materiae-iphy-ac-cn"><span class="toc-number">1.0.7.0.1.</span> <span class="toc-text">
+          Materiae ：http:&#x2F;&#x2F;materiae.iphy.ac.cn&#x2F;#&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Topological-Materials-Arsenal%EF%BC%9Ahttps-ccmp-nju-edu-cn"><span class="toc-number">1.0.7.0.2.</span> <span class="toc-text">
+          Topological Materials Arsenal：https:&#x2F;&#x2F;ccmp.nju.edu.cn&#x2F;</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Topological-Materials-Database-http-topologicalquantumchemistry-org"><span class="toc-number">1.0.7.0.3.</span> <span class="toc-text">
+          Topological Materials Database: http:&#x2F;&#x2F;topologicalquantumchemistry.org&#x2F;#&#x2F;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%888%EF%BC%89%E4%BA%8C%E7%BB%B4%E6%9D%90%E6%96%99"><span class="toc-number">1.0.8.</span> <span class="toc-text">
+          （8）二维材料</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Materials-Cloud%EF%BC%9Ahttps-www-materialscloud-org-discover-2dstructures-dashboard-ptable"><span class="toc-number">1.0.8.0.1.</span> <span class="toc-text">
+          Materials Cloud：https:&#x2F;&#x2F;www.materialscloud.org&#x2F;discover&#x2F;2dstructures&#x2F;dashboard&#x2F;ptable</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2D-Materials%EF%BC%9Ahttps-materialsweb-org"><span class="toc-number">1.0.8.0.2.</span> <span class="toc-text">
+          2D Materials：https:&#x2F;&#x2F;materialsweb.org&#x2F;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%889%EF%BC%89%E8%B6%85%E5%AF%BC%E6%9D%90%E6%96%99"><span class="toc-number">1.0.9.</span> <span class="toc-text">
+          （9）超导材料</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%ACI%E7%B1%BB%E8%B6%85%E5%AF%BC%E4%BD%93%EF%BC%9Ahttp-www-superconductors-org-Type1-htm"><span class="toc-number">1.0.9.0.1.</span> <span class="toc-text">
+          第I类超导体：http:&#x2F;&#x2F;www.superconductors.org&#x2F;Type1.htm</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%ACII%E7%B1%BB%E8%B6%85%E5%AF%BC%E4%BD%93%EF%BC%9Ahttp-www-superconductors-org-Type2-htm"><span class="toc-number">1.0.9.0.2.</span> <span class="toc-text">
+          第II类超导体：http:&#x2F;&#x2F;www.superconductors.org&#x2F;Type2.htm</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%8810%EF%BC%89%E7%A3%81%E7%BB%93%E6%9E%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.0.10.</span> <span class="toc-text">
+          （10）磁结构数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MAGNDATA-http-webbdcrista1-ehu-es-magndata-index-php-show-db-1"><span class="toc-number">1.0.10.0.1.</span> <span class="toc-text">
+          MAGNDATA: http:&#x2F;&#x2F;webbdcrista1.ehu.es&#x2F;magndata&#x2F;index.php?show_db&#x3D;1</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%9B%B8%E5%85%B3%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E7%A8%8B%E5%BA%8F%E4%B8%BB%E9%A1%B5"><span class="toc-number">2.</span> <span class="toc-text">
+          二、相关第一性原理计算程序主页</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">
+          三、学习资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%9C%80%E5%A5%BD%E7%9A%84%E4%B8%AD%E6%96%87%E8%B5%84%E6%96%99%EF%BC%9A%E5%A4%A7%E5%B8%88%E5%85%84%E7%A7%91%E7%A0%94%E7%BD%91"><span class="toc-number">3.0.1.</span> <span class="toc-text">
+          （1）最好的中文资料：大师兄科研网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89VASP-%E7%BC%96%E8%AF%91%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-number">3.0.2.</span> <span class="toc-text">
+          （2）VASP 编译方法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89VASP-%E5%9B%BA%E5%AE%9A%E5%9F%BA%E7%9F%A2%E4%BC%98%E5%8C%96%E7%BB%93%E6%9E%84%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.0.3.</span> <span class="toc-text">
+          （3）VASP 固定基矢优化结构的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89LAMMPS%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">3.0.4.</span> <span class="toc-text">
+          （4）LAMMPS学习资料</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3%E5%8D%9A%E6%96%87%E4%B8%93%E6%A0%8F%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">
+          四、第一性原理计算相关博文专栏：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%87%8F%E5%AD%90%E5%8C%96%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">
+          五、量子化学学习网站：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%80%9D%E6%83%B3%E5%AE%B6%E5%85%AC%E7%A4%BE%E7%9A%84%E9%97%A8%E5%8F%A3"><span class="toc-number">5.0.1.</span> <span class="toc-text">
+          （1）思想家公社的门口:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E8%B0%88%E8%B0%88%E5%AD%A6%E9%87%8F%E5%AD%90%E5%8C%96%E5%AD%A6%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E5%9C%B0%E5%85%A5%E9%97%A8"><span class="toc-number">5.0.2.</span> <span class="toc-text">
+          （2）谈谈学量子化学如何正确地入门:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E8%AE%A1%E7%AE%97%E5%8C%96%E5%AD%A6%E5%85%AC%E7%A4%BE%E8%AE%BA%E5%9D%9B%EF%BC%9A"><span class="toc-number">5.0.3.</span> <span class="toc-text">
+          （3）计算化学公社论坛：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9"><span class="toc-number">6.</span> <span class="toc-text">
+          六、补充内容</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Sometimes it's the very people who no one imagines anything of who do the things no one can imagine</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="yournumber" target="_blank" rel="noopener" data-popover="Wechat" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="yournumber" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">16</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
