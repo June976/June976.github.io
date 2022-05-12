@@ -410,7 +410,14 @@
   </url>
   
   <url>
-    <loc>https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/</loc>
+    <loc>https://june976.github.io/tags/C-C/</loc>
+    <lastmod>2022-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/windows%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -431,21 +438,7 @@
   </url>
   
   <url>
-    <loc>https://june976.github.io/tags/C-C/</loc>
-    <lastmod>2022-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/windows%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2022-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/git/</loc>
+    <loc>https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -460,13 +453,6 @@
   
   <url>
     <loc>https://june976.github.io/tags/%E7%94%BB%E5%9B%BE/</loc>
-    <lastmod>2022-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -494,6 +480,13 @@
   </url>
   
   <url>
+    <loc>https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://june976.github.io/tags/python3/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -502,6 +495,13 @@
   
   <url>
     <loc>https://june976.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
+    <lastmod>2022-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/git/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -522,6 +522,13 @@
   </url>
   
   <url>
+    <loc>https://june976.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
+    <lastmod>2022-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://june976.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -530,13 +537,6 @@
   
   <url>
     <loc>https://june976.github.io/tags/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-05-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
     <lastmod>2022-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
