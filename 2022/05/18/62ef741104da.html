@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="zjHtMN5bFl4jkMXnYa-Qxnv5aCHi4hiWmq19dRvW9dE"><meta name="msvalidate.01" content="3FCE749E09FA739F3F8966641CE2F104"><meta name="baidu-site-verification" content="code-qK1Gt1cc5G"><meta name="description" content="由于博客上的图片量和引用量增加，导致访问速度有所下降，所以打算优化一下博客的访问速度，当然是在有限资源的情况下来优化，主要是褥一下各大平台的羊毛。众所周知，Github Pages是部署在国外服务器上的，因此从国外访问速度还可以，但是国内访问速度较慢，所以主要是优化国内访问这方面。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用cdn加速Github Pages的访问速度">
+<meta property="og:url" content="https://june976.github.io/2022/05/18/62ef741104da.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="由于博客上的图片量和引用量增加，导致访问速度有所下降，所以打算优化一下博客的访问速度，当然是在有限资源的情况下来优化，主要是褥一下各大平台的羊毛。众所周知，Github Pages是部署在国外服务器上的，因此从国外访问速度还可以，但是国内访问速度较慢，所以主要是优化国内访问这方面。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://june976.github.io/images/cdn/aliyun.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/tencentyun.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/qiniuyun.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/freecdn.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/youpaiyun.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/cloudflare.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c2.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c3.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c4.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c5.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c5_2.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c5_3.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c5_4.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c6.png">
+<meta property="og:image" content="https://june976.github.io/images/cdn/c6_2.png">
+<meta property="article:published_time" content="2022-05-18T07:42:27.000Z">
+<meta property="article:modified_time" content="2022-05-18T11:38:29.467Z">
+<meta property="article:author" content="Jun">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://june976.github.io/images/cdn/aliyun.png"><title>使用cdn加速Github Pages的访问速度 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2022/05/18/62ef741104da.html"><link rel="alternate" href="/sitemap.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">About</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">Share knowledges, Tell stories and Show something interesting!</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">使用cdn加速Github Pages的访问速度</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-05-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2022-05-18</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon" data-popover="Visitors" data-popover-pos="up"><i class="fas fa-eye"></i></span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>由于博客上的图片量和引用量增加，导致访问速度有所下降，所以打算优化一下博客的访问速度，当然是在有限资源的情况下来优化，主要是褥一下各大平台的羊毛。众所周知，Github Pages是部署在国外服务器上的，因此从国外访问速度还可以，但是国内访问速度较慢，所以主要是优化国内访问这方面。<span id="more"></span>在有限资源的情况下，优化网站访问速度的常用方式有两种，一种是网页懒加载，动态加载技术，这种方法的思路是在加载网页时，先生成网页框架，再慢慢加载其它较为耗时的资源，动态加载则是在每次只加载显示在浏览器中的内容，而跳过之外的内容，这些方法都是在源码的层面上提升网页的速度，第二种就是cdn技术，这种技术是从网络路由上来提升网页的访问速度。以上两种技术中，个人更加青睐第二种，主要是基于以下几个理由：</p>
+<ul>
+<li>cdn加载效果更好</li>
+<li>懒加载访问网页时可能会遇到某些关键内容一直加载中，体验也不是很好</li>
+<li>cdn加速技术已经商业化，有很多的平台提供，而第一种技术必须要根据自己的网页来修改源码，实践更加麻烦<br />
+当然值得一提的是，以上两种技术在使用上并不冲突，完全可以同时使用，我在实践中只试过第二种技术，所以下面将介绍以下第二种技术。</li>
+</ul>
+
+        <h2 id="一-cdn技术简介"   >
+          <a href="#一-cdn技术简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#一-cdn技术简介"></a> 一、cdn技术简介</h2>
+      
+<p>cdn是Content Delivery Network的缩写，全称是内容分发网络，其主要目的是为了解决网络拥塞问题，推荐一篇讲得比较好的文章：<span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/p/452543578" >https://zhuanlan.zhihu.com/p/452543578</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>,文中讲到了一个非常形象的例子：物流服务。为了保证物流效率，大部分电商平台在全国乃至世界各地都有自己的货物仓库，当用户下单后，电商平台会根据用户的地址选择最近的仓库发货，这样就能大大地提升物流效率，这样一种物流策略其实就对应着cdn中的路由策略，它利用多台服务器，将用户所需的资源分布式地储存在世界各地，这样不同地方的用户访问资源时，相应地从最近的服务器中来获取资源，能够较大地提升资源的访问速度和路由效率。</p>
+
+        <h2 id="二-一些主流的提供cdn服务的平台"   >
+          <a href="#二-一些主流的提供cdn服务的平台" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#二-一些主流的提供cdn服务的平台"></a> 二、一些主流的提供cdn服务的平台</h2>
+      
+<p>这些内容主要是参考网上相关文章整理的，简单介绍了一些主流的提供cdn服务的平台，一部分我也没有具体了解过，所以说法也不一定对，谨慎参考。</p>
+
+        <h3 id="1-阿里云"   >
+          <a href="#1-阿里云" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1-阿里云"></a> 1. 阿里云</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="https://common-buy.aliyun.com/?commodityCode=cdn#/open" >https://common-buy.aliyun.com/?commodityCode=cdn#/open</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>了解过</strong></li>
+<li>没有免费流量</li>
+<li>国内(包括全球)加速需要网站备案</li>
+</ul>
+<p><img src="/images/cdn/aliyun.png" alt="aliyun" /></p>
+
+        <h3 id="2-腾讯云"   >
+          <a href="#2-腾讯云" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2-腾讯云"></a> 2. 腾讯云</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="https://console.cloud.tencent.com/cdn" >https://console.cloud.tencent.com/cdn</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>了解过</strong></li>
+<li>每个月有10GB的国内免费流量</li>
+<li>国内(包括全球)加速需要网站备案</li>
+</ul>
+<p><img src="/images/cdn/tencentyun.png" alt="tencentyun" /></p>
+
+        <h3 id="3-七牛云"   >
+          <a href="#3-七牛云" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3-七牛云"></a> 3. 七牛云</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="https://portal.qiniu.com/cdn/overview" >https://portal.qiniu.com/cdn/overview</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>了解过</strong></li>
+<li>每个月10GB免费国内流量和10GB的其它地区流量，动态加速5万次</li>
+<li>国内(包括全球)加速需要网站备案</li>
+</ul>
+<p><img src="/images/cdn/qiniuyun.png" alt="qiniuyun" /></p>
+
+        <h3 id="4-freecdn"   >
+          <a href="#4-freecdn" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#4-freecdn"></a> 4. FreeCDN</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="http://www.freecdn.pw/" >http://www.freecdn.pw/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>没试过</strong></li>
+<li>完全免费，并且提供网络防御</li>
+</ul>
+<p><img src="/images/cdn/freecdn.png" alt="freecdn" /></p>
+
+        <h3 id="5-又拍云"   >
+          <a href="#5-又拍云" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#5-又拍云"></a> 5. 又拍云</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="https://www.upyun.com/products/cdn" >https://www.upyun.com/products/cdn</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>没试过</strong></li>
+<li>可以申请加入<span class="exturl"><a class="exturl__link"   href="https://boke112.com/post/5256.html" >又拍云联盟</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，每月免费获取10GB的存储空间和15GB流量</li>
+<li>国内(包括全球)加速需要网站备案</li>
+</ul>
+<p><img src="/images/cdn/youpaiyun.png" alt="youpaiyun" /></p>
+
+        <h3 id="6-cloudflare"   >
+          <a href="#6-cloudflare" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#6-cloudflare"></a> 6. Cloudflare</h3>
+      
+<ul>
+<li>网址：<span class="exturl"><a class="exturl__link"   href="https://www.cloudflare.com/zh-cn/" >https://www.cloudflare.com/zh-cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><strong>正在使用</strong></li>
+<li>个人服务完全免费，附加服务收费</li>
+<li>全球加速不需要网站备案</li>
+</ul>
+<p><img src="/images/cdn/cloudflare.png" alt="cloudflare" /></p>
+<p>在选择cdn服务时遇到的一个很大的问题是：以上大部分针对国内加速的cdn服务都需要网站备案才能使用，但是由于我的Github Pages是托管在Github上的，在国外，所以<strong>无法备案</strong>，并且我暂时也没有将博客移植到国内的云服务器主机上的想法，因此最终选择了Cloudflare平台的cdn服务，没有选择国内其它的主流平台。最后，需要说明的一点是，<strong>由于使用cdn服务需要实名认证，因此考虑到个人信息安全，建议尽量选择主流的平台，防止个人信息泄露</strong>。</p>
+
+        <h2 id="三-在cloudflare平台上开启cdn服务"   >
+          <a href="#三-在cloudflare平台上开启cdn服务" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#三-在cloudflare平台上开启cdn服务"></a> 三、在Cloudflare平台上开启cdn服务</h2>
+      
+
+        <h3 id="1注册账号"   >
+          <a href="#1注册账号" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1注册账号"></a> 1.注册账号</h3>
+      
+<p>首先当然是注册一个账号，可以用邮箱注册，注册过程非常简单，这里不再说明。</p>
+
+        <h3 id="2添加网站"   >
+          <a href="#2添加网站" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2添加网站"></a> 2.添加网站</h3>
+      
+<p>账号注册好后，进入控制台，点击&quot;添加站点&quot;加入需要使用cdn加速的站点，注意填入的站点域名不需要加入www.前缀，如下图，这里jun997.xyz是我自己的网站，已经配置完成了，而jun.com是随便选的一个示范网站，不是本人的。<br />
+<img src="/images/cdn/c2.png" alt="c2" /></p>
+
+        <h3 id="3选择计划"   >
+          <a href="#3选择计划" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3选择计划"></a> 3.选择计划</h3>
+      
+<p>完成以上步骤后，下一步选择计划，个人完全免费版本即可。<br />
+<img src="/images/cdn/c3.png" alt="c3" /></p>
+
+        <h3 id="4dns记录扫描"   >
+          <a href="#4dns记录扫描" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#4dns记录扫描"></a> 4.DNS记录扫描</h3>
+      
+<p>这一步是完全自动的，平台会自动扫描网站的DNS记录，完成后点击继续就可以。<br />
+<img src="/images/cdn/c4.png" alt="c4" /></p>
+
+        <h3 id="5更改dns服务器"   >
+          <a href="#5更改dns服务器" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#5更改dns服务器"></a> 5.更改DNS服务器</h3>
+      
+<p>完成第4步后，按照平台的提示，我们需要修改原来的DNS服务器，改为平台提供的DNS服务器，<span class="exturl"><a class="exturl__link"   href="http://xn--hasslo-9l5j.ns.cloudflare.xn--commarjory-jh7q.ns.cloudflare.com" >即hasslo.ns.cloudflare.com和marjory.ns.cloudflare.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，如下图：<br />
+<img src="/images/cdn/c5.png" alt="c5" /></p>
+<p>一般在购买域名时平台会自动给我们分配相应DNS服务器，并且提供给我们修改的渠道，我的域名是在阿里云上购买的，登录阿里云控制台，在域名服务-域名列表-管理处可以修改域名，如下：<br />
+<img src="/images/cdn/c5_2.png" alt="c5_2" /></p>
+<p>点击修改DNS即可修改DNS服务器：<br />
+<img src="/images/cdn/c5_3.png" alt="c5_3" /></p>
+<p>在下面的方框中填入改为平台提供的DNS服务器，点击确定，然后回到平台，点击“完成，检查名称服务器”即可。<br />
+<img src="/images/cdn/c5_4.png" alt="c5_4" /></p>
+
+        <h2 id="6配置dns服务器的相关设置"   >
+          <a href="#6配置dns服务器的相关设置" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#6配置dns服务器的相关设置"></a> 6.配置DNS服务器的相关设置</h2>
+      
+<p>以上完成后，最后就需要配置DNS服务器，主要是针对安全性和性能优化方面，根据需要自行设置，有些付费内容可以跳过：<br />
+<img src="/images/cdn/c6.png" alt="c6" /></p>
+<p>最后设置好了之后等待一定时间之后就会收到激活成功的邮件<br />
+<img src="/images/cdn/c6_2.png" alt="c6_2" /></p>
+
+        <h2 id="四-一篇关于cdn加速的参考文章"   >
+          <a href="#四-一篇关于cdn加速的参考文章" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#四-一篇关于cdn加速的参考文章"></a> 四、一篇关于cdn加速的参考文章</h2>
+      
+<p>这篇文章给自己提供了很大的帮助，技术细节讲得很清楚，链接为：<span class="exturl"><a class="exturl__link"   href="https://www.yunyoujun.cn/posts/use-cdn-speed-up-site/" >使用 CDN 加速你的 GitHub Pages 网站</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2022/05/18/62ef741104da.html">https://june976.github.io/2022/05/18/62ef741104da.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/">技术</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/github/">github</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">￥打赏我￥</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2022/05/12/03649f262993.html"><span class="paginator-prev__text">原子间的作用势综述----文献翻译</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-cdn%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">
+           一、cdn技术简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%80%E4%BA%9B%E4%B8%BB%E6%B5%81%E7%9A%84%E6%8F%90%E4%BE%9Bcdn%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="toc-number">2.</span> <span class="toc-text">
+           二、一些主流的提供cdn服务的平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-number">2.1.</span> <span class="toc-text">
+           1. 阿里云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%85%BE%E8%AE%AF%E4%BA%91"><span class="toc-number">2.2.</span> <span class="toc-text">
+           2. 腾讯云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%83%E7%89%9B%E4%BA%91"><span class="toc-number">2.3.</span> <span class="toc-text">
+           3. 七牛云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-freecdn"><span class="toc-number">2.4.</span> <span class="toc-text">
+           4. FreeCDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%8F%88%E6%8B%8D%E4%BA%91"><span class="toc-number">2.5.</span> <span class="toc-text">
+           5. 又拍云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-cloudflare"><span class="toc-number">2.6.</span> <span class="toc-text">
+           6. Cloudflare</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%9C%A8cloudflare%E5%B9%B3%E5%8F%B0%E4%B8%8A%E5%BC%80%E5%90%AFcdn%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.</span> <span class="toc-text">
+           三、在Cloudflare平台上开启cdn服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E6%B3%A8%E5%86%8C%E8%B4%A6%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">
+           1.注册账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%AB%99"><span class="toc-number">3.2.</span> <span class="toc-text">
+           2.添加网站</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E9%80%89%E6%8B%A9%E8%AE%A1%E5%88%92"><span class="toc-number">3.3.</span> <span class="toc-text">
+           3.选择计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4dns%E8%AE%B0%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="toc-number">3.4.</span> <span class="toc-text">
+           4.DNS记录扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E6%9B%B4%E6%94%B9dns%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.5.</span> <span class="toc-text">
+           5.更改DNS服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E9%85%8D%E7%BD%AEdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">
+           6.配置DNS服务器的相关设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%80%E7%AF%87%E5%85%B3%E4%BA%8Ecdn%E5%8A%A0%E9%80%9F%E7%9A%84%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">5.</span> <span class="toc-text">
+           四、一篇关于cdn加速的参考文章</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">A Journey of A Thousand Miles Begins with A Single Step!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/HelloWorldTM?type=blog" target="_blank" rel="noopener" data-popover="social.CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="mailto:admin@jun997.xyz" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">M</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="https://mailchi.mp/78fbe8b89a13/juns-blog-subscribe" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email Subscribe</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/sitemap.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS Subscribe</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">42</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Rights Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Unique Visitor"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Page View"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
