@@ -1,625 +1,226 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jun&#39;s Blog</title>
+  <icon>https://june976.github.io/icon.png</icon>
+  <subtitle>Share knowledges, Tell stories and Show something interesting!</subtitle>
+  <link href="https://june976.github.io/sitemap.xml" rel="self"/>
   
-  <url>
-    <loc>https://june976.github.io/Next/index.html</loc>
-    
-    <lastmod>2022-05-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <link href="https://june976.github.io/"/>
+  <updated>2022-05-28T05:17:21.803Z</updated>
+  <id>https://june976.github.io/</id>
   
-  <url>
-    <loc>https://june976.github.io/2022/05/28/21408f95ab60.html</loc>
+  <author>
+    <name>Jun</name>
     
-    <lastmod>2022-05-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </author>
   
-  <url>
-    <loc>https://june976.github.io/2022/05/18/62ef741104da.html</loc>
-    
-    <lastmod>2022-05-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <generator uri="https://hexo.io/">Hexo</generator>
   
-  <url>
-    <loc>https://june976.github.io/about/index.html</loc>
+  <entry>
+    <title>基于NexT主题的下一代博客成功上线</title>
+    <link href="https://june976.github.io/2022/05/28/21408f95ab60.html"/>
+    <id>https://june976.github.io/2022/05/28/21408f95ab60.html</id>
+    <published>2022-05-28T01:15:57.000Z</published>
+    <updated>2022-05-28T05:17:21.803Z</updated>
     
-    <lastmod>2022-05-18</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/05/12/3b806b4132f4.html</loc>
+    <summary type="html">&lt;p&gt;这篇文章主要是记录一下我新建了一个博客，同样是基于Github Pages，不同的是以前的博客基于&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://theme-stun.github.io/docs/zh-CN/&quot; &gt;stun&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;主题，而下一代（新的）博客是基于&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://theme-next.js.org/&quot; &gt;NexT&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;主题，以前博客的内容都移植到了新博客上，并且新博客还酌情修改和增加了一些东西，以下作简要介绍。</summary>
     
-    <lastmod>2022-05-16</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/05/12/03649f262993.html</loc>
     
-    <lastmod>2022-05-14</lastmod>
+    <category term="Tell stories" scheme="https://june976.github.io/categories/Tell-stories/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/index.html</loc>
     
-    <lastmod>2022-05-08</lastmod>
+    <category term="hexo" scheme="https://june976.github.io/tags/hexo/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/09/26/11591683f1f1.html</loc>
+    <category term="github" scheme="https://june976.github.io/tags/github/"/>
     
-    <lastmod>2022-05-08</lastmod>
+    <category term="NexT" scheme="https://june976.github.io/tags/NexT/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2022/05/05/e7718b0be565.html</loc>
+  <entry>
+    <title>使用cdn加速Github Pages的访问速度</title>
+    <link href="https://june976.github.io/2022/05/18/62ef741104da.html"/>
+    <id>https://june976.github.io/2022/05/18/62ef741104da.html</id>
+    <published>2022-05-18T07:42:27.000Z</published>
+    <updated>2022-05-18T11:38:29.467Z</updated>
     
-    <lastmod>2022-05-06</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/18/4ea3d8ef74d8.html</loc>
-    
-    <lastmod>2022-05-05</lastmod>
+    <summary type="html">&lt;p&gt;由于博客上的图片量和引用量增加，导致访问速度有所下降，所以打算优化一下博客的访问速度，当然是在有限资源的情况下来优化，主要是褥一下各大平台的羊毛。众所周知，Github Pages是部署在国外服务器上的，因此从国外访问速度还可以，但是国内访问速度较慢，所以主要是优化国内访问这方面。</summary>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/14/456c7cc4063e.html</loc>
     
-    <lastmod>2022-05-05</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/05/03/ef404d02ac46.html</loc>
     
-    <lastmod>2022-05-03</lastmod>
+    <category term="技术" scheme="https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/05/03/c672fa6cd432.html</loc>
+    <category term="github" scheme="https://june976.github.io/tags/github/"/>
     
-    <lastmod>2022-05-03</lastmod>
+    <category term="笔记" scheme="https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2022/04/10/b438dad131c8.html</loc>
+  <entry>
+    <title>原子间的作用势综述----文献翻译</title>
+    <link href="https://june976.github.io/2022/05/12/03649f262993.html"/>
+    <id>https://june976.github.io/2022/05/12/03649f262993.html</id>
+    <published>2022-05-12T10:55:28.000Z</published>
+    <updated>2022-05-14T13:04:45.669Z</updated>
     
-    <lastmod>2022-04-19</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/19/61701185fd17.html</loc>
+    <summary type="html">&lt;p&gt;接上一篇文章，网上冲浪时翻到了这篇关于原子间作用势的综述，文章中对MD模拟中常用的EAM势做了详细的介绍，以及推导了一些常用的势场模型，推导过程较为详细，这里同样打算把全文翻译一下，注意：由于文章很长，所以翻译时可能会选择性的删掉一些内容，另外由于知识水平有限，文中可能存在错误，所有内容以原文为主，以下是原文链接：&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://inis.iaea.org/search/search.aspx?orig_q=RN:38064873&quot; &gt;https://inis.iaea.org/search/search.aspx?orig_q=RN:38064873&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;。</summary>
     
-    <lastmod>2022-04-19</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/05/5a4e29b6e47f.html</loc>
     
-    <lastmod>2022-04-18</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/10/19/fa8dd53a80bb.html</loc>
+    <category term="文献翻译" scheme="https://june976.github.io/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="相互作用势" scheme="https://june976.github.io/tags/%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/07/13/69e1919ce000.html</loc>
+  <entry>
+    <title>势能函数简介</title>
+    <link href="https://june976.github.io/2022/05/12/3b806b4132f4.html"/>
+    <id>https://june976.github.io/2022/05/12/3b806b4132f4.html</id>
+    <published>2022-05-12T05:43:03.000Z</published>
+    <updated>2022-05-16T12:06:18.762Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/2aeee452cddf.html</loc>
+    <summary type="html">&lt;p&gt;在网上翻到一篇讲势能函数的文章，内容比较基础，这里打算把全文翻译一下，文章链接：&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html&quot; &gt;https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;。</summary>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/10/14/2afef2311268.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/09/07/326777fc665b.html</loc>
+    <category term="文献翻译" scheme="https://june976.github.io/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="相互作用势" scheme="https://june976.github.io/tags/%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/10/29/bc723db49fa7.html</loc>
+  <entry>
+    <title>我的一些关于在网络上分享知识的观点</title>
+    <link href="https://june976.github.io/2022/05/05/e7718b0be565.html"/>
+    <id>https://june976.github.io/2022/05/05/e7718b0be565.html</id>
+    <published>2022-05-05T13:52:51.000Z</published>
+    <updated>2022-05-06T03:47:49.373Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/4da2187789c8.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
+    <summary type="html">&lt;p&gt;这篇文章主要想谈谈我的一些关于网络知识分享的观点。信息化时代的到来，使得知识的获取渠道多样化，我们不再只是通过书籍、报纸、课堂等一些传统的渠道获取知识，网络作为一个媒介，创造了许多新的知识获取方式，例如：网络直播，公众号，个人博客等，网络使得知识传播的方式更加多样化，同时也使得我们每个人更加容易获取知识，那么这其中就会产生两个问题</summary>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/01/05/8b606fceb688.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/01/1ca003d5e001.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="随笔" scheme="https://june976.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2022/03/17/71dcc77058d7.html</loc>
+  <entry>
+    <title>一个简单的机器学习流程实现</title>
+    <link href="https://june976.github.io/2022/05/03/ef404d02ac46.html"/>
+    <id>https://june976.github.io/2022/05/03/ef404d02ac46.html</id>
+    <published>2022-05-03T11:19:23.000Z</published>
+    <updated>2022-05-03T14:02:14.967Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/07/13/6f6888ca9264.html</loc>
+    <summary type="html">&lt;p&gt;停工不停学，疫情给了我停下来好好学习的机会，值得好好地珍惜。但是，疫情也让我失去了很多，春光无限好，却没有机会领略，实验也搁置下来了。最近的我，对机器学习产生了浓厚的兴趣，跃跃欲试地想要利用机器学习在自己的方向上大干一场…</summary>
     
-    <lastmod>2022-04-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/03/18/40c86576ffde.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/09/08/96ba0b1afebf.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="技术" scheme="https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/41311a1fe8aa.html</loc>
+    <category term="机器学习" scheme="https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/11/01/16cec52429d7.html</loc>
+  <entry>
+    <title>python实现kd树以及最近邻查找算法</title>
+    <link href="https://june976.github.io/2022/05/03/c672fa6cd432.html"/>
+    <id>https://june976.github.io/2022/05/03/c672fa6cd432.html</id>
+    <published>2022-05-03T02:37:53.000Z</published>
+    <updated>2022-05-03T02:40:20.652Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/02/15/3f53609416d7.html</loc>
+    <summary type="html">&lt;h1 id=&quot;一-kd树简介&quot;   &gt;
+          &lt;a href=&quot;#一-kd树简介&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-kd树简介&quot;&gt;&lt;/a&gt; 一、kd树简介&lt;/h1&gt;
+      
+&lt;p&gt;kd树是一种&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.jianshu.com/p/7d45078b5cec&quot; &gt;树形结构&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;，树的每个节点存放一个k维数据，某一节点的子节点可以看作是由&lt;strong&gt;过该节点&lt;/strong&gt;一个平面切割后产生的（&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://zhuanlan.zhihu.com/p/53826008&quot; &gt;想象一下切蛋糕的过程&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;），如此反复产生切割平面，就能为每个数据在空间中建立索引。</summary>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/11/23/6800f0e9812a.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/10/12/1209da553055.html</loc>
+    <category term="算法" scheme="https://june976.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="机器学习" scheme="https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
+    
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/06/11/d6956c2c6a82.html</loc>
+  <entry>
+    <title>Bash脚本获取VASP能带计算数据</title>
+    <link href="https://june976.github.io/2022/04/19/61701185fd17.html"/>
+    <id>https://june976.github.io/2022/04/19/61701185fd17.html</id>
+    <published>2022-04-19T13:24:43.000Z</published>
+    <updated>2022-04-19T15:27:40.245Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/cb8aecf13b6c.html</loc>
+    <summary type="html">&lt;p&gt;由于天天蹲宿舍导致&lt;strong&gt;coding&lt;/strong&gt;能力得到大大加成的我，又把之前用python写的获取vasp能带计算数据的脚本移植到了bash平台，没错，这就是天天蹲在宿舍无事可做的我的日常。</summary>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/01/05/86770f3d0f2b.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/11/10/61d157e1a6d8.html</loc>
+    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
+    
+    <category term="bash" scheme="https://june976.github.io/tags/bash/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/06/12/5dd2244a7459.html</loc>
+  <entry>
+    <title>使用Python脚本获取VASP能带计算数据</title>
+    <link href="https://june976.github.io/2022/04/18/4ea3d8ef74d8.html"/>
+    <id>https://june976.github.io/2022/04/18/4ea3d8ef74d8.html</id>
+    <published>2022-04-18T07:35:08.000Z</published>
+    <updated>2022-05-05T12:27:28.261Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/04/04/16b79d457780.html</loc>
+    <summary type="html">&lt;p&gt;由于在宿舍蹲，自己的Coding能力&lt;strong&gt;与日俱增&lt;/strong&gt;。最近刚写了一份&lt;strong&gt;提取VASP能带数据&lt;/strong&gt;的Python脚本，代码已经提交到了我的&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://github.com/June976/getVASPBandScripys&quot; &gt;Github仓库&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;中，有需要的朋友自提。</summary>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/03/19/e62b13aed44c.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/1a569df66db6.html</loc>
+    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
+    
+    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  </entry>
   
-  <url>
-    <loc>https://june976.github.io/2021/06/11/9acbfc20ae96.html</loc>
+  <entry>
+    <title>VASP中POTCAR使用指南</title>
+    <link href="https://june976.github.io/2022/04/14/456c7cc4063e.html"/>
+    <id>https://june976.github.io/2022/04/14/456c7cc4063e.html</id>
+    <published>2022-04-14T02:21:55.000Z</published>
+    <updated>2022-05-05T11:27:51.216Z</updated>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/a22d8cbbf9ba.html</loc>
+    <summary type="html">&lt;p&gt;POTCAR是VASP计算的四大输入文件之一（INCAR、POSCAR、POTCAR、KPOINTS)，官方一般会随着新版本的VASP软件包发布的同时提供相应的各个元素的POTCAR库，一般计算时直接根据元素类型组合一下使用就行了，使用并没有什么难度。</summary>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2022/03/03/8e3434fd0234.html</loc>
     
-    <lastmod>2022-04-04</lastmod>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/2021/06/11/c030b2cf13e1.html</loc>
+    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
     
-    <lastmod>2022-04-04</lastmod>
+    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
     
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-
-  <url>
-    <loc>https://june976.github.io/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  
-  <url>
-    <loc>https://june976.github.io/tags/DFT/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/bash/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/VASP/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/C-C/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/windows%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/hexo/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/github/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/git/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/matlab/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E7%94%BB%E5%9B%BE/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/python3/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/Linux/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/NexT/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://june976.github.io/tags/Materials-Project/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-
-  
-  <url>
-    <loc>https://june976.github.io/categories/Tell-stories/</loc>
-    <lastmod>2022-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
+    <category term="提示" scheme="https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/"/>
+    
+  </entry>
   
-</urlset>
+</feed>
