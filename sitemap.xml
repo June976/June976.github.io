@@ -1,291 +1,773 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Jun&#39;s Blog</title>
-  <icon>https://june976.github.io/icon.png</icon>
-  <subtitle>Share knowledges, Tell stories and Show something interesting!</subtitle>
-  <link href="https://june976.github.io/sitemap.xml" rel="self"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <link href="https://june976.github.io/"/>
-  <updated>2023-09-15T05:45:48.054Z</updated>
-  <id>https://june976.github.io/</id>
+  <url>
+    <loc>https://june976.github.io/2023/09/15/d802a3019dcd.html</loc>
+    
+    <lastmod>2023-09-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
-  <author>
-    <name>Jun</name>
+  <url>
+    <loc>https://june976.github.io/2023/06/15/b92001135b17.html</loc>
     
-  </author>
+    <lastmod>2023-06-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
-  <generator uri="https://hexo.io/">Hexo</generator>
+  <url>
+    <loc>https://june976.github.io/2023/03/09/0311b83de3d4.html</loc>
+    
+    <lastmod>2023-03-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
-  <entry>
-    <title>常用单位转换</title>
-    <link href="https://june976.github.io/2023/09/15/d802a3019dcd.html"/>
-    <id>https://june976.github.io/2023/09/15/d802a3019dcd.html</id>
-    <published>2023-09-15T04:12:41.000Z</published>
-    <updated>2023-09-15T05:45:48.054Z</updated>
+  <url>
+    <loc>https://june976.github.io/2022/12/15/872683c02e71.html</loc>
     
+    <lastmod>2022-12-15</lastmod>
     
-    <summary type="html">&lt;p&gt;这是一篇关于原子单位和常用物理单位转换的博客，主要突出实用性，方便查阅，随时更新。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
-    
-  </entry>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
-  <entry>
-    <title>使用matplotlib制作动态图</title>
-    <link href="https://june976.github.io/2023/06/15/b92001135b17.html"/>
-    <id>https://june976.github.io/2023/06/15/b92001135b17.html</id>
-    <published>2023-06-15T07:44:54.000Z</published>
-    <updated>2023-06-15T14:59:51.014Z</updated>
+  <url>
+    <loc>https://june976.github.io/2022/12/12/f8ec183d53c8.html</loc>
     
+    <lastmod>2022-12-12</lastmod>
     
-    <summary type="html">&lt;h2 id=&quot;一-简介&quot;   &gt;
-          &lt;a href=&quot;#一-简介&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-简介&quot;&gt;&lt;/a&gt; 一、简介&lt;/h2&gt;
-      
-&lt;p&gt;matplotlib(&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://matplotlib.org/&quot; &gt;https://matplotlib.org/&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;)是一个著名的python绘图库，由于其灵活强大的绘图功能使得在python中可视化变得非常容易，关于matplotlib的基础知识这里不再介绍，有疑问可以去官网翻&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://matplotlib.org/stable/tutorials/index.html#&quot; &gt;Tutorials&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;和&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://matplotlib.org/stable/gallery/index.html&quot; &gt;example&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;学习。由于我们实际使用时常常是绘制静态图，忽略了matplotlib的动态图生成功能，同时matplotlib生成动态图的功能不是非常&lt;strong&gt;友善&lt;/strong&gt;，因此大部分人在真的需要制作动态图时都会选择先用matplotlib生成一系列静态图片，然后再用其它相对比较容易使用的第三方python库生成动态图，如imageio(&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://imageio.readthedocs.io/en/stable/#&quot; &gt;https://imageio.readthedocs.io/en/stable/#&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;), 或者使用其它工具，如Matlab。这里打算简单介绍一下在matplotlib库中制作动态图的方法。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-    <category term="matplotlib" scheme="https://june976.github.io/tags/matplotlib/"/>
-    
-  </entry>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   
-  <entry>
-    <title>VASP计算材料的弹性矩阵和杨氏模量</title>
-    <link href="https://june976.github.io/2023/03/09/0311b83de3d4.html"/>
-    <id>https://june976.github.io/2023/03/09/0311b83de3d4.html</id>
-    <published>2023-03-09T06:52:22.000Z</published>
-    <updated>2023-03-13T10:44:31.521Z</updated>
+  <url>
+    <loc>https://june976.github.io/2022/10/12/d8530d5ad70d.html</loc>
     
+    <lastmod>2022-10-12</lastmod>
     
-    <summary type="html">&lt;h2 id=&quot;一-从1d到3d材料的胡克定律hookes-law&quot;   &gt;
-          &lt;a href=&quot;#一-从1d到3d材料的胡克定律hookes-law&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-从1d到3d材料的胡克定律hookes-law&quot;&gt;&lt;/a&gt; 一、从1D到3D材料的胡克定律(Hooke’s law)&lt;/h2&gt;
-      
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/09/22/a44e2a2ff29c.html</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/07/20/fcb561f75ba7.html</loc>
+    
+    <lastmod>2022-07-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/07/14/5bba32a5a042.html</loc>
+    
+    <lastmod>2022-07-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/07/06/6dc33d7b89c1.html</loc>
+    
+    <lastmod>2022-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/06/12/620d09f19c9e.html</loc>
+    
+    <lastmod>2022-06-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/Next/index.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/07/13/69e1919ce000.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/10/14/2afef2311268.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/41311a1fe8aa.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/about/index.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/11/23/6800f0e9812a.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/10/19/fa8dd53a80bb.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/10/12/1209da553055.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/09/08/96ba0b1afebf.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/28/21408f95ab60.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/05/e7718b0be565.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/10/b438dad131c8.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/05/5a4e29b6e47f.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/10/29/bc723db49fa7.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/2aeee452cddf.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/12/03649f262993.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/12/3b806b4132f4.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/11/01/16cec52429d7.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/4da2187789c8.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/18/62ef741104da.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/18/4ea3d8ef74d8.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/03/18/40c86576ffde.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/02/15/3f53609416d7.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/01/05/8b606fceb688.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/03/ef404d02ac46.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/01/1ca003d5e001.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/01/05/86770f3d0f2b.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/09/07/326777fc665b.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/12/5dd2244a7459.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/05/03/c672fa6cd432.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/04/16b79d457780.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/03/19/e62b13aed44c.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/a22d8cbbf9ba.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/9acbfc20ae96.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/09/26/11591683f1f1.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/07/13/6f6888ca9264.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/c030b2cf13e1.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/1a569df66db6.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/03/17/71dcc77058d7.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/cb8aecf13b6c.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/06/11/d6956c2c6a82.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/14/456c7cc4063e.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/03/03/8e3434fd0234.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2021/11/10/61d157e1a6d8.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/2022/04/19/61701185fd17.html</loc>
+    
+    <lastmod>2022-06-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
-        &lt;h3 id=&quot;11d材料的胡克定律&quot;   &gt;
-          &lt;a href=&quot;#11d材料的胡克定律&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11d材料的胡克定律&quot;&gt;&lt;/a&gt; 1.1D材料的胡克定律&lt;/h3&gt;
-      
-&lt;p&gt;1D材料的胡克定律也就是我们所熟知的线弹性模型，即是我们初中阶段就学习过的&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;Δ&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;F=k\Delta{x}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.13889em;&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.69444em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03148em;&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;Δ&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，用更加标准和统一的形式可以写作：&lt;/p&gt;
-&lt;p class=&#39;katex-block&#39;&gt;&lt;span class=&quot;katex-display&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;σ&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\sigma = C\epsilon
-&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03588em;&quot;&gt;σ&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07153em;&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;ϵ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;对于1D材料，其中三个关键参数分别为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;σ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\sigma&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03588em;&quot;&gt;σ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;：应力，标量，SI制下的单位为&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;N&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.10903em;&quot;&gt;N&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;C&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.07153em;&quot;&gt;C&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;：弹性常数，标量，SI制下的单位为&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;N&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.10903em;&quot;&gt;N&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\epsilon&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.43056em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;ϵ&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;：应变，标量，表达式为 &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;msub&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;Δ&lt;/mi&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/mrow&gt;&lt;msub&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\frac{l-l_0}{l_0}=\frac{\Delta{l}}{l_0}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.3413079999999997em;vertical-align:-0.44509999999999994em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mopen nulldelimiter&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mfrac&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.8962079999999999em;&quot;&gt;&lt;span style=&quot;top:-2.655em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.31731428571428577em;&quot;&gt;&lt;span style=&quot;top:-2.357em;margin-left:-0.01968em;margin-right:0.07142857142857144em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.5em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size3 size1 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.143em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.23em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;frac-line&quot; style=&quot;border-bottom-width:0.04em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.4101em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;mbin mtight&quot;&gt;−&lt;/span&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.31731428571428577em;&quot;&gt;&lt;span style=&quot;top:-2.357em;margin-left:-0.01968em;margin-right:0.07142857142857144em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.5em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size3 size1 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.143em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.44509999999999994em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mclose nulldelimiter&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1.325208em;vertical-align:-0.44509999999999994em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mopen nulldelimiter&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mfrac&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.8801079999999999em;&quot;&gt;&lt;span style=&quot;top:-2.655em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.31731428571428577em;&quot;&gt;&lt;span style=&quot;top:-2.357em;margin-left:-0.01968em;margin-right:0.07142857142857144em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.5em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size3 size1 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.143em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.23em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;frac-line&quot; style=&quot;border-bottom-width:0.04em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;top:-3.394em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:3em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;Δ&lt;/span&gt;&lt;span class=&quot;mord mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.01968em;&quot;&gt;l&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.44509999999999994em;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mclose nulldelimiter&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;
-值得注意的是，考虑到在变形过程中材料的弹性常数并不是恒定的，因此在这里计算应力和应变有两种方法并且通常存在一定差别，这就是我们常说的工程应力、工程应变和真应力、真应变，具体可以参考这篇帖子：&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.zhihu.com/question/294496637&quot; &gt;https://www.zhihu.com/question/294496637&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-    <category term="Young&#39;s modulus" scheme="https://june976.github.io/tags/Young-s-modulus/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   
-  <entry>
-    <title>pytorch 的自动求导功能简介</title>
-    <link href="https://june976.github.io/2022/12/15/872683c02e71.html"/>
-    <id>https://june976.github.io/2022/12/15/872683c02e71.html</id>
-    <published>2022-12-15T01:16:10.000Z</published>
-    <updated>2022-12-15T12:10:57.312Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;自动求导是 pytorch 的一项重要功能，它使得 pytorch 能够灵活快速地构建神经网络模型。反向传播算法是优化神经网络模型参数的一个重要方法，在反向传播过程中需要不断计算损失函数对参数的导数，然后更新相应的模型参数，首先简单介绍一下反向传播算法。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-    <category term="机器学习" scheme="https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="文献翻译" scheme="https://june976.github.io/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/DFT/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>四阶龙格库塔方法求解一次常微分方程组-python实现</title>
-    <link href="https://june976.github.io/2022/12/12/f8ec183d53c8.html"/>
-    <id>https://june976.github.io/2022/12/12/f8ec183d53c8.html</id>
-    <published>2022-12-12T06:52:55.000Z</published>
-    <updated>2022-12-12T07:28:35.881Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;一-前言&quot;   &gt;
-          &lt;a href=&quot;#一-前言&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-前言&quot;&gt;&lt;/a&gt; 一、前言&lt;/h1&gt;
-      
-&lt;p&gt;之前在博客发布了关于使用四阶龙格库塔方法求解一次常微分方程组的文章，由于代码缺少具体的验证，部分朋友可能存在疑问，因此这里打算再重新写一篇博客来验证一下程序的正确性，另外，这里是使用python语言来实现的。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    <category term="Tell stories" scheme="https://june976.github.io/categories/Share-knowledges/Tell-stories/"/>
-    
-    <category term="Show something interesting" scheme="https://june976.github.io/categories/Share-knowledges/Tell-stories/Show-something-interesting/"/>
-    
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-    <category term="算法" scheme="https://june976.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/bash/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>Python 中的函数装饰器简介</title>
-    <link href="https://june976.github.io/2022/10/12/d8530d5ad70d.html"/>
-    <id>https://june976.github.io/2022/10/12/d8530d5ad70d.html</id>
-    <published>2022-10-12T06:47:44.000Z</published>
-    <updated>2022-10-12T11:29:35.300Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;1装饰器decorator简介&quot;   &gt;
-          &lt;a href=&quot;#1装饰器decorator简介&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1装饰器decorator简介&quot;&gt;&lt;/a&gt; 1.装饰器(decorator)简介&lt;/h2&gt;
-      
-&lt;p&gt;装饰器是 Python 中一个非常有用和强大的工具，它的&lt;strong&gt;作用对象&lt;/strong&gt;是函数，实现的功能是&lt;strong&gt;在我们调用函数之前和之后&lt;/strong&gt;，&lt;strong&gt;再为函数添加一些额外的功能&lt;/strong&gt;。通过函数装饰器可以有效地提高代码的灵活性，复用能力，以及简化代码。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="笔记" scheme="https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="技术" scheme="https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/VASP/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>高斯过程回归(Gaussian Processes Regression, GPR)简介</title>
-    <link href="https://june976.github.io/2022/09/22/a44e2a2ff29c.html"/>
-    <id>https://june976.github.io/2022/09/22/a44e2a2ff29c.html</id>
-    <published>2022-09-22T10:09:02.000Z</published>
-    <updated>2022-09-22T10:13:06.668Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一-高斯过程简介&quot;   &gt;
-          &lt;a href=&quot;#一-高斯过程简介&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-高斯过程简介&quot;&gt;&lt;/a&gt; 一、高斯过程简介&lt;/h2&gt;
-      
-&lt;p&gt;&lt;strong&gt;高斯过程&lt;/strong&gt;是一种常用的&lt;strong&gt;监督学习&lt;/strong&gt;方法，可以用于解决回归和分类问题。&lt;br /&gt;
-高斯过程模型的优点有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;预测对观察结果进行了插值&lt;/li&gt;
-&lt;li&gt;预测的结果是概率形式的&lt;/li&gt;
-&lt;li&gt;通用性：可以指定不同的核函数（kernels）形式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;高斯过程模型的确定包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;它们不是稀疏的，即它们使用整个样本/特征信息来执行预测&lt;/li&gt;
-&lt;li&gt;高维空间模型会失效，高维也就是指特征的数量超过几十个&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;值得注意的是，高斯过程模型的优势主要体现在处理&lt;strong&gt;非线性&lt;/strong&gt;和&lt;strong&gt;小数据&lt;/strong&gt;问题上。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="python3" scheme="https://june976.github.io/tags/python3/"/>
-    
-    <category term="机器学习" scheme="https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="算法" scheme="https://june976.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>VASP官网关于IBRION参数的说明</title>
-    <link href="https://june976.github.io/2022/07/20/fcb561f75ba7.html"/>
-    <id>https://june976.github.io/2022/07/20/fcb561f75ba7.html</id>
-    <published>2022-07-20T05:39:09.000Z</published>
-    <updated>2022-07-21T03:56:53.286Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;IBRION 参数是 VASP 计算中一个使用频率较高的参数，其功能涉及到离子弛豫、分子动力学和声子计算，同时 &lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.vasp.at/wiki/index.php/The_VASP_Manual&quot; &gt;VASP Wiki&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;上关于参数的使用给出了非常详细的说明，这里打算把官网的说明简单翻译一下，同时在适当地方可能加入一点注释，主要是为了加深自己的理解，这是原文地址：&lt;span class=&quot;exturl&quot;&gt;&lt;a class=&quot;exturl__link&quot;   href=&quot;https://www.vasp.at/wiki/index.php/IBRION&quot; &gt;https://www.vasp.at/wiki/index.php/IBRION&lt;/a&gt;&lt;span class=&quot;exturl__icon&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
-    
-    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
-    
-    <category term="提示" scheme="https://june976.github.io/tags/%E6%8F%90%E7%A4%BA/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>vasp+phonopy计算声子谱</title>
-    <link href="https://june976.github.io/2022/07/14/5bba32a5a042.html"/>
-    <id>https://june976.github.io/2022/07/14/5bba32a5a042.html</id>
-    <published>2022-07-14T08:18:05.000Z</published>
-    <updated>2022-07-14T13:55:52.165Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一-从薛定谔方程到声子&quot;   &gt;
-          &lt;a href=&quot;#一-从薛定谔方程到声子&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-从薛定谔方程到声子&quot;&gt;&lt;/a&gt; 一、从薛定谔方程到声子&lt;/h2&gt;
-      
-&lt;p&gt;在开始计算声子谱之前，我们首先需要搞清楚什么是&lt;strong&gt;声子&lt;/strong&gt;，不同于电子、中子、质子等&lt;strong&gt;实体粒子&lt;/strong&gt;，声子不是一种实体粒子，而是一种&lt;strong&gt;描述晶格振动模式的量子化的准粒子&lt;/strong&gt;。它完全是人们为了描述晶格振动而引入的一种理论模型，并没有任何实际物体对应，这一点并不难理解，就像超弦理论并没有弦一样…但是要理解声子的由来还是需要花费一点功夫的，这里我们可以先从单粒子的薛定谔方程说起。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
-    
-    <category term="VASP" scheme="https://june976.github.io/tags/VASP/"/>
-    
-    <category term="声子谱" scheme="https://june976.github.io/tags/%E5%A3%B0%E5%AD%90%E8%B0%B1/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-  <entry>
-    <title>Quantum ESPRESSO v7.1安装和学习资料</title>
-    <link href="https://june976.github.io/2022/07/06/6dc33d7b89c1.html"/>
-    <id>https://june976.github.io/2022/07/06/6dc33d7b89c1.html</id>
-    <published>2022-07-06T12:45:36.000Z</published>
-    <updated>2022-07-07T04:07:15.902Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一-简介&quot;   &gt;
-          &lt;a href=&quot;#一-简介&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-简介&quot;&gt;&lt;/a&gt; 一、简介&lt;/h2&gt;
-      
-&lt;p&gt;Quantum ESPRESSO是一个开源的电子结构计算和材料模拟软件，它主要是基于密度泛函理论(DFT)，平面波和赝势理论，它的功能主要包括：&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Share knowledges" scheme="https://june976.github.io/categories/Share-knowledges/"/>
-    
-    
-    <category term="DFT" scheme="https://june976.github.io/tags/DFT/"/>
-    
-    <category term="Linux" scheme="https://june976.github.io/tags/Linux/"/>
-    
-    <category term="qe" scheme="https://june976.github.io/tags/qe/"/>
-    
-  </entry>
+  <url>
+    <loc>https://june976.github.io/tags/python3/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
-</feed>
+  <url>
+    <loc>https://june976.github.io/tags/hexo/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/github/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/matlab/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E7%94%BB%E5%9B%BE/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/C-C/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/windows%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/git/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/Linux/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E6%96%87%E7%8C%AE%E7%BF%BB%E8%AF%91/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/qe/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E5%A3%B0%E5%AD%90%E8%B0%B1/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/matplotlib/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E5%8A%BF/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/Materials-Project/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/NexT/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/tags/Young-s-modulus/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://june976.github.io/categories/Share-knowledges/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/categories/Share-knowledges/Tell-stories/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/categories/Share-knowledges/Tell-stories/Show-something-interesting/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://june976.github.io/categories/Tell-stories/</loc>
+    <lastmod>2023-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
