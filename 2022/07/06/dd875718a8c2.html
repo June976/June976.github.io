@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="zjHtMN5bFl4jkMXnYa-Qxnv5aCHi4hiWmq19dRvW9dE"><meta name="msvalidate.01" content="3FCE749E09FA739F3F8966641CE2F104"><meta name="baidu-site-verification" content="code-qK1Gt1cc5G"><meta name="description" content="一、简介        Quantum ESPRESSO是一个开源的电子结构计算和材料模拟软件，它主要是基于密度泛函理论(DFT)，平面波和赝势理论，它的功能主要包括：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quantum ESPRESSO v7.1安装和学习资料">
+<meta property="og:url" content="https://june976.github.io/2022/07/06/dd875718a8c2.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="一、简介        Quantum ESPRESSO是一个开源的电子结构计算和材料模拟软件，它主要是基于密度泛函理论(DFT)，平面波和赝势理论，它的功能主要包括：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://june976.github.io/images/qeinstall/runfile.jpg">
+<meta property="article:published_time" content="2022-07-06T20:45:36.000Z">
+<meta property="article:modified_time" content="2024-05-30T05:19:53.997Z">
+<meta property="article:author" content="Jun">
+<meta property="article:tag" content="DFT">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="qe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://june976.github.io/images/qeinstall/runfile.jpg"><title>Quantum ESPRESSO v7.1安装和学习资料 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2022/07/06/dd875718a8c2.html"><link rel="alternate" href="/sitemap.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">About</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-sync"></i></span><span class="header-nav-menu-item__text">Next</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/Next/"><span class="header-nav-submenu-item__icon"><i class="fas fa-file-alt"></i></span><span class="header-nav-submenu-item__text">Doc</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://next.jun997.xyz/"><span class="header-nav-submenu-item__icon"><i class="fas fa-external-link-alt"></i></span><span class="header-nav-submenu-item__text">To</span></a></div></div></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">Share knowledges, Tell stories and Show something interesting!</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Quantum ESPRESSO v7.1安装和学习资料</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-07-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon" data-popover="Visitors" data-popover-pos="up"><i class="fas fa-eye"></i></span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h2 id="一-简介"   >
+          <a href="#一-简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#一-简介"></a> 一、简介</h2>
+      
+<p>Quantum ESPRESSO是一个开源的电子结构计算和材料模拟软件，它主要是基于密度泛函理论(DFT)，平面波和赝势理论，它的功能主要包括：</p>
+<span id="more"></span>
+<ul>
+<li>基态计算
+<ul>
+<li>能量自洽，应力，Kohn—Sham轨道</li>
+<li>模守恒赝势(NCPP)和超软赝势(USPP)，缀加投影波(PAW)</li>
+<li>多种交换-关联泛函：从LDA到GGA(PW91, PBE, B88-P86, BLYP)再到meta-GGA, 再到精确交换(HF)和杂化泛函(PBE0, B3LYP, HSE)</li>
+<li>范德华修正：Grimme的D2,D3修正，XDM, 非局域范德华泛函</li>
+<li>Hubbard U(DFT+U, DFT+U+V)</li>
+<li>Berry相位极化</li>
+<li>非线性磁矩，自旋轨道耦合</li>
+</ul>
+</li>
+<li>结构优化，分子动力学和势能面
+<ul>
+<li>准牛顿BFGS预处理的几何优化<span class="exturl"><a class="exturl__link"   href="https://manual.q-chem.com/4.3/sect0080.html" >(GDIIS)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>阻尼动力学</li>
+<li>Car-Parrinello分子动力学</li>
+<li>波恩-奥本海默分子动力学</li>
+<li>轻推弹性带(NEB)方法</li>
+</ul>
+</li>
+<li>量子输运
+<ul>
+<li>弹道输运</li>
+<li>基于最大局域万尼尔函数(MLWF)的相干传输</li>
+<li>最大局域化万尼尔函数(MLWF)和输运性质</li>
+<li>Kubo-Greenwood电导</li>
+</ul>
+</li>
+<li>电化学和特殊边界条件…</li>
+<li>响应性质(微扰密度泛函理论)…</li>
+<li>光谱性质…<br />
+值得一提的是，qe在电声相互作用、弛豫时间计算等方面做的非常好。截至目前，QE的最新版本7.1版本，发布于2022.6.16，下面将介绍一下7.1最新版本的安装。</li>
+</ul>
+
+        <h2 id="二-qe-v71安装"   >
+          <a href="#二-qe-v71安装" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#二-qe-v71安装"></a> 二、qe v7.1安装</h2>
+      
+
+        <h3 id="1-联网安装"   >
+          <a href="#1-联网安装" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1-联网安装"></a> 1、联网安装</h3>
+      
+<p><strong>联网</strong>这一条件对于大部分超算集群都是不满足的，如果你使用的超算集群具备这一条件，那么恭喜你，你安装软件的道路将会是<strong>一帆风顺</strong>，对于qe，你只需要输入以下命令：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install quantum-espresso</span><br></pre></td></tr></table></div></figure>
+<p>就可以完成qe的安装，<em><strong>简单方便快捷</strong></em>！</p>
+
+        <h3 id="2-离线安装"   >
+          <a href="#2-离线安装" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2-离线安装"></a> 2、离线安装</h3>
+      
+<p>如果你使用的集群和我所使用的一样，不具备联网的条件，那么就需要离线安装，主要包括以下几步：</p>
+
+        <h4 id="21-准备工作"   >
+          <a href="#21-准备工作" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#21-准备工作"></a> 2.1、准备工作</h4>
+      
+<p>这里我们使用make来编译qe，编译之前需要准备安装MKL库和mpi并行库，大部分集群上都安装好了英特尔编译环境，其中包含这些需要的库，直接load就行了。</p>
+
+        <h4 id="22-下载源码"   >
+          <a href="#22-下载源码" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#22-下载源码"></a> 2.2、下载源码</h4>
+      
+<p>这是下载地址：<span class="exturl"><a class="exturl__link"   href="https://www.quantum-espresso.org/login/" >https://www.quantum-espresso.org/login/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，下载前需要注册一下</p>
+
+        <h4 id="23-安装"   >
+          <a href="#23-安装" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#23-安装"></a> 2.3、安装</h4>
+      
+<ol>
+<li>解压文件, 并进入到文件目录中：</li>
+</ol>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf qe-7.1-ReleasePack.tar.gz</span><br><span class="line"><span class="built_in">cd</span> qe-7.1/</span><br></pre></td></tr></table></div></figure>
+<ol start="2">
+<li>编译文件</li>
+</ol>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/your install dir/</span><br><span class="line">make all</span><br></pre></td></tr></table></div></figure>
+<p>然后就是<strong>漫长</strong>的编译过程，在编译与wannier90相关的工具时可能会报错中止，原因是没有安装wannier90，此时需要手动下载wannier90的安装包，这是下载地址：<span class="exturl"><a class="exturl__link"   href="https://github.com/wannier-developers/wannier90/archive/v3.1.0.tar.gz" >https://github.com/wannier-developers/wannier90/archive/v3.1.0.tar.gz</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，下载完成后放到<strong>archive</strong>文件夹下，编译一下，具体编译过程可以参考这篇文章：<span class="exturl"><a class="exturl__link"   href="https://perturbo-code.github.io/mydoc_installation" >https://perturbo-code.github.io/mydoc_installation</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>, wannier90编译完成后回到刚才中断的文件夹中，继续编译即可完成。</p>
+<ol start="3">
+<li>安装<br />
+编译完成后，这一步很简单，直接：</li>
+</ol>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></div></figure>
+<p>即可完成，最终得到如下一系列可执行文件，其中最终要的文件就是<strong>pw.x</strong>，这一文件可以执行单点自洽计算和结构优化，包括DFT的主要功能。<br />
+<img src="/images/qeinstall/runfile.jpg" alt="可执行文件" /></p>
+
+        <h3 id="三-一些有用的qe资源"   >
+          <a href="#三-一些有用的qe资源" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#三-一些有用的qe资源"></a> 三、一些有用的qe资源</h3>
+      
+<ul>
+<li>qe文件处理的一些小工具：<span class="exturl"><a class="exturl__link"   href="https://www.densityflow.com/" >https://www.densityflow.com/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>qe官网关于计算参数的说明(可以类比vasp的相关参数)：<span class="exturl"><a class="exturl__link"   href="https://www.quantum-espresso.org/documentation/input-data-description/" >https://www.quantum-espresso.org/documentation/input-data-description/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>qe输入文件和结构可视化：<span class="exturl"><a class="exturl__link"   href="https://www.materialscloud.org/work/tools/qeinputgenerator" >https://www.materialscloud.org/work/tools/qeinputgenerator</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>SSSP赝势库(包括效率和精度两个版本)：<span class="exturl"><a class="exturl__link"   href="https://www.materialscloud.org/discover/sssp/table/efficiency" >https://www.materialscloud.org/discover/sssp/table/efficiency</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>官方提供的赝势库：<span class="exturl"><a class="exturl__link"   href="http://pseudopotentials.quantum-espresso.org/legacy_tables" >http://pseudopotentials.quantum-espresso.org/legacy_tables</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>一些qe教程：
+<ul>
+<li>学术之友公众号的一些qe教程收集：
+<ul>
+<li>QE计算能带详细教程：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/w9tCZaU9jBVVPp2e5mZPoQ" >https://mp.weixin.qq.com/s/w9tCZaU9jBVVPp2e5mZPoQ</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE学习指南：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/FJs8QBnI21gx2cbwx2tdWw" >https://mp.weixin.qq.com/s/FJs8QBnI21gx2cbwx2tdWw</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解1，SiC的能带：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/VAwRXqMEHlEQuOdJmGbH-Q" >https://mp.weixin.qq.com/s/VAwRXqMEHlEQuOdJmGbH-Q</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解2，Cu的能带、功函数：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/V6f6sqn1G-TGEjFL3uF0dg" >https://mp.weixin.qq.com/s/V6f6sqn1G-TGEjFL3uF0dg</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解3，光学性质计算：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/xvHtY_YyZkhTUl0URK6GAA" >https://mp.weixin.qq.com/s/xvHtY_YyZkhTUl0URK6GAA</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解4，声子计算：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/pKUUgrUV1jCIBgqGejGIaA" >https://mp.weixin.qq.com/s/pKUUgrUV1jCIBgqGejGIaA</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解5，杂化泛函：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/hz20-WtBlpx9aYgmdUM5fg" >https://mp.weixin.qq.com/s/hz20-WtBlpx9aYgmdUM5fg</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE实践详解6，投影态密度：<span class="exturl"><a class="exturl__link"   href="https://mp.weixin.qq.com/s/EmOCKdU_JxLgD2n_eloq2Q" >https://mp.weixin.qq.com/s/EmOCKdU_JxLgD2n_eloq2Q</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+<li>Quantum Espresso Tutorials：<span class="exturl"><a class="exturl__link"   href="https://www.paradim.org/toolbox/theory/quantum_espresso/tutorials" >https://www.paradim.org/toolbox/theory/quantum_espresso/tutorials</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>QE+wannier90构建紧束缚模型：<span class="exturl"><a class="exturl__link"   href="https://zhuanlan.zhihu.com/p/381615718" >https://zhuanlan.zhihu.com/p/381615718</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>wannier90使用教程：<span class="exturl"><a class="exturl__link"   href="https://www.bilibili.com/read/cv5273343/" >https://www.bilibili.com/read/cv5273343/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>wanniertools：<span class="exturl"><a class="exturl__link"   href="https://github.com/quanshengwu/wannier_tools" >https://github.com/quanshengwu/wannier_tools</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2022/07/06/dd875718a8c2.html">https://june976.github.io/2022/07/06/dd875718a8c2.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/DFT/">DFT</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/Linux/">Linux</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/qe/">qe</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">￥打赏我￥</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/07/14/276373048e9d.html"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">vasp+phonopy计算声子谱</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/06/12/f28e0843a8e2.html"><span class="paginator-prev__text">windows配置LaTeX环境</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">
+           一、简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-qe-v71%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">
+           二、qe v7.1安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%81%94%E7%BD%91%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">
+           1、联网安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text">
+           2、离线安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#21-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+           2.1、准备工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#22-%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+           2.2、下载源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#23-%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+           2.3、安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84qe%E8%B5%84%E6%BA%90"><span class="toc-number">2.3.</span> <span class="toc-text">
+           三、一些有用的qe资源</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">A Journey of A Thousand Miles Begins with A Single Step!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/HelloWorldTM?type=blog" target="_blank" rel="noopener" data-popover="social.CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="mailto:admin@jun997.xyz" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">M</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="https://mailchi.mp/78fbe8b89a13/juns-blog-subscribe" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email Subscribe</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/sitemap.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS Subscribe</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">57</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Rights Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Unique Visitor"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Page View"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

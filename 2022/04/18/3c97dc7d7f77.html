@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="zjHtMN5bFl4jkMXnYa-Qxnv5aCHi4hiWmq19dRvW9dE"><meta name="msvalidate.01" content="3FCE749E09FA739F3F8966641CE2F104"><meta name="baidu-site-verification" content="code-qK1Gt1cc5G"><meta name="description" content="由于在宿舍蹲，自己的Coding能力与日俱增。最近刚写了一份提取VASP能带数据的Python脚本，代码已经提交到了我的Github仓库中，有需要的朋友自提。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Python脚本获取VASP能带计算数据">
+<meta property="og:url" content="https://june976.github.io/2022/04/18/3c97dc7d7f77.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="由于在宿舍蹲，自己的Coding能力与日俱增。最近刚写了一份提取VASP能带数据的Python脚本，代码已经提交到了我的Github仓库中，有需要的朋友自提。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://june976.github.io/images/pythonbands/klabel.png">
+<meta property="og:image" content="https://june976.github.io/images/pythonbands/bd.png">
+<meta property="og:image" content="https://june976.github.io/images/pythonbands/originband.png">
+<meta property="og:image" content="https://june976.github.io/images/pythonbands/pymatgenband.png">
+<meta property="article:published_time" content="2022-04-18T15:35:08.000Z">
+<meta property="article:modified_time" content="2024-05-30T05:19:53.997Z">
+<meta property="article:author" content="Jun">
+<meta property="article:tag" content="DFT">
+<meta property="article:tag" content="VASP">
+<meta property="article:tag" content="python3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://june976.github.io/images/pythonbands/klabel.png"><title>使用Python脚本获取VASP能带计算数据 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2022/04/18/3c97dc7d7f77.html"><link rel="alternate" href="/sitemap.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">About</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-sync"></i></span><span class="header-nav-menu-item__text">Next</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/Next/"><span class="header-nav-submenu-item__icon"><i class="fas fa-file-alt"></i></span><span class="header-nav-submenu-item__text">Doc</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://next.jun997.xyz/"><span class="header-nav-submenu-item__icon"><i class="fas fa-external-link-alt"></i></span><span class="header-nav-submenu-item__text">To</span></a></div></div></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">Share knowledges, Tell stories and Show something interesting!</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">使用Python脚本获取VASP能带计算数据</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-04-18</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon" data-popover="Visitors" data-popover-pos="up"><i class="fas fa-eye"></i></span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>由于在宿舍蹲，自己的Coding能力<strong>与日俱增</strong>。最近刚写了一份<strong>提取VASP能带数据</strong>的Python脚本，代码已经提交到了我的<span class="exturl"><a class="exturl__link"   href="https://github.com/June976/getVASPBandScripys" >Github仓库</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>中，有需要的朋友自提。<span id="more"></span>这篇文章主要是介绍一下代码的结构和代码的用法，可以作为手册使用。</p>
+
+        <h3 id="1准备工作"   >
+          <a href="#1准备工作" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1准备工作"></a> 1.准备工作</h3>
+      
+<p>数据的提取主要是基于<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/index.html" >Pymatgen</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>库来实现的，脚本语言是python3，以下简单列出脚本运行需要使用的环境：</p>
+<ul>
+<li>Python 3.9 or later</li>
+<li>pymatgen</li>
+<li>numpy</li>
+<li>pandas</li>
+</ul>
+
+        <h3 id="2使用脚本"   >
+          <a href="#2使用脚本" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2使用脚本"></a> 2.使用脚本</h3>
+      
+<p>使用脚本时需要注意以下几点：</p>
+<ul>
+<li>需要设置费米能，一般是提取scf计算中的费米能(因为scf计算得到的费米能比能带计算得到的费米能精度更高)，提取费米能也很容易：</li>
+</ul>
+<blockquote>
+<p>grep E-fermi OUTCAR</p>
+</blockquote>
+<ul>
+<li>需要在脚本的同级目录下放入能带计算的K点路径<strong>KPOINTS文件</strong>和产生的<strong>vasprun.xml文件</strong>，作为初始输入文件</li>
+<li>根据计算得到的能带是否分为自旋向上和自旋向下两支决定使用哪个脚本，注意不能根据是否打开了自旋来区分，因为对于有的体系即使打开了自旋最后算出来的能带还是只有一支，这种情况仍然使用no spin版本</li>
+</ul>
+
+        <h3 id="3简要介绍一下代码的结构"   >
+          <a href="#3简要介绍一下代码的结构" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3简要介绍一下代码的结构"></a> 3.简要介绍一下代码的结构</h3>
+      
+
+        <h4 id="从vasp原始输出文件中读入数据"   >
+          <a href="#从vasp原始输出文件中读入数据" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#从vasp原始输出文件中读入数据"></a> 从vasp原始输出文件中读入数据</h4>
+      
+<p>原始数据的读入主要使用的是pymatgen.io.vasp.outputs中的<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/pymatgen.io.vasp.outputs.html?highlight=vasprun#pymatgen.io.vasp.outputs.Vasprun" >Vasprun</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>类，它是pymatgen库中专门用来读取vasprun.xml文件的类。vasprun.xml是vasp运行时产生的文件，有点类似日志文件，记录vasp计算过程的所有数据，包括态密度和能带。读取之后通过<strong>get_band_structure</strong>函数获得一个BandStructure对象，这里需要传入能带计算中的KPOINTS文件作为输入参数，来得到相应的k点路径。</p>
+
+        <h4 id="获取关键变量"   >
+          <a href="#获取关键变量" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#获取关键变量"></a> 获取关键变量</h4>
+      
+<p>得到BandStructure对象之后，需要获得进一步提取所需的变量，BandStructure对象本身就是字典类型，以键值对的方式存储，提取非常方便，后续计算需要提取的几个主要变量是：</p>
+<ul>
+<li>倒晶格基矢，相应的键是&quot;lattice_rec&quot; -&gt; “matrix”</li>
+<li>倒空间中的k点坐标（包含所有），是<strong>分数坐标</strong>的形式。相应的键是&quot;kpoints&quot;</li>
+<li>每条能带分支的信息，包含当前分支下start_index, end_index, 高对称点的名字。相应的键是&quot;branches&quot;</li>
+<li>每条能带上每个k点的能量，相应的键是&quot;bands&quot; -&gt; “1&quot;或”-1&quot;(如果是能带分了自旋向上和自旋向下两支)</li>
+</ul>
+
+        <h4 id="将对应的k点坐标投影到x轴上"   >
+          <a href="#将对应的k点坐标投影到x轴上" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#将对应的k点坐标投影到x轴上"></a> 将对应的K点坐标投影到X轴上</h4>
+      
+<p>要画能带图，需要解决的一个关键问题就是：<strong>要把三维倒空间中的K点投影到一维X轴上</strong>。投影的方法是根据它们在K空间中的坐标计算相应的距离，然后对每个点逐步累加，得出的总距离即对应该点在X轴上的距离。这里有一个技巧，即vasp能带计算过程中，对于每一个分支上的能带，k点应该是均匀分布的，所以我们只需要计算出这一分支的总距离，然后平分就能得到该分支中相邻k点之间的距离，而不需要对于每两个相邻的点都计算一下，这也是上面为什么要获得每条能带分支的信息。以下代码完成的是这一工作：</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetKptDistance</span>(<span class="params">ls_kpt1, ls_kpt2, rec_lat</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    根据两个k点的坐标得到它们在倒空间中的距离</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    mat_rec_lat = np.array(rec_lat)</span><br><span class="line">    vec_k1 = ls_kpt1[<span class="number">0</span>]*mat_rec_lat[<span class="number">0</span>]+ls_kpt1[<span class="number">1</span>]*mat_rec_lat[<span class="number">1</span>]+ls_kpt1[<span class="number">2</span>]*mat_rec_lat[<span class="number">2</span>]</span><br><span class="line">    vec_k2 = ls_kpt2[<span class="number">0</span>]*mat_rec_lat[<span class="number">0</span>]+ls_kpt2[<span class="number">1</span>]*mat_rec_lat[<span class="number">1</span>]+ls_kpt2[<span class="number">2</span>]*mat_rec_lat[<span class="number">2</span>]</span><br><span class="line">    k_distance = np.linalg.norm(vec_k2-vec_k1)</span><br><span class="line">    <span class="keyword">return</span> k_distance</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetLabelPosiInAxisX</span>(<span class="params">ls_brchs_info, rec_lat, ls_kpnts</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    获取每个k点在X轴上的位置，即是将三维k点坐标转化到一维空间坐标系</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    brchs_count = <span class="built_in">len</span>(ls_brchs_info)</span><br><span class="line">    sum_distance = <span class="number">0.0</span></span><br><span class="line">    df_klabels = pd.DataFrame(data=ls_brchs_info)</span><br><span class="line">    ls_labels_distance = []</span><br><span class="line">    ls_kpnts_distance = []</span><br><span class="line">    <span class="keyword">for</span> brchs_index <span class="keyword">in</span> <span class="built_in">range</span>(brchs_count):</span><br><span class="line">        dict_brch = ls_brchs_info[brchs_index]</span><br><span class="line">        st_index = dict_brch[<span class="string">&#x27;start_index&#x27;</span>]</span><br><span class="line">        ed_index = dict_brch[<span class="string">&#x27;end_index&#x27;</span>]</span><br><span class="line">        brch_distance = GetKptDistance(ls_kpt1=ls_kpnts[st_index], ls_kpt2=ls_kpnts[ed_index], rec_lat=rec_lat)</span><br><span class="line">        ls_labels_distance.append(sum_distance+brch_distance)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(st_index, ed_index+<span class="number">1</span>):</span><br><span class="line">            kpt_distance = sum_distance+(i-st_index)*brch_distance/(ed_index-st_index)</span><br><span class="line">            ls_kpnts_distance.append(kpt_distance)</span><br><span class="line">        sum_distance = sum_distance+brch_distance</span><br><span class="line">    df_klabels = df_klabels.assign(label_sum_distance=ls_labels_distance)</span><br><span class="line">    df_klabels.to_csv(<span class="string">&quot;klable.csv&quot;</span>)           <span class="comment">### klabel.csv文件存储了每个k点的符号和在X轴上的位置</span></span><br><span class="line">    <span class="keyword">return</span> ls_kpnts_distance</span><br></pre></td></tr></table></div></figure>
+<p>这一过程中还生成了klabel.csv文件，这一文件的作用是标出每条分支中的高对称点和相应的在X轴上的坐标。</p>
+
+        <h4 id="将能带数据存入文件"   >
+          <a href="#将能带数据存入文件" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#将能带数据存入文件"></a> 将能带数据存入文件</h4>
+      
+<p>开始已经获取了存储相应每条能带上每个K点的能量，同时上一步也获取了每个K点在X轴上对应的坐标，因此就可以将完整的能带数据存入文件中了，以下函数完成这一过程：</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">WriteBandsEnergyToTxt</span>(<span class="params">filename, dt_bands, ls_kpts, fermi_energy</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    把能带的能量数据写入到文本文件中,其中filename是文件名,dt_bands是读取到的能带文件，fermi_energy是费米能</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    bds_count = <span class="built_in">len</span>(dt_bands)</span><br><span class="line">    kps_count = <span class="built_in">len</span>(ls_kpts)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(file=filename, mode=<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> bd_file:</span><br><span class="line">        bd_file.write(<span class="string">&quot;kpos\tenergy(eV)\tenergy_with_zero_fermi_energy\n&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(bds_count):</span><br><span class="line">            bd_energy = dt_bands[i]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(kps_count):</span><br><span class="line">                bd_energy_kj = bd_energy[j]</span><br><span class="line">                bd_energy_kj_zero_efermi = bd_energy_kj-fermi_energy</span><br><span class="line">                distance_kj = ls_kpts[j]</span><br><span class="line">                str_oneline = <span class="string">&#x27;&#123;:.5f&#125;\t&#123;:.5f&#125;\t&#123;:.5f&#125;\n&#x27;</span>.<span class="built_in">format</span>(distance_kj, bd_energy_kj, bd_energy_kj_zero_efermi)</span><br><span class="line">                bd_file.write(str_oneline)</span><br><span class="line">            bd_file.write(<span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></div></figure>
+<p>保存的文件结构类似以下表格：</p>
+<div class="table-container"><table>
+    <tbody>
+    <tr>
+        <th>band no.</th>
+        <th>kpos(k点对应的位置)</th>
+        <th>energy(能量)</th>
+        <th>energy_with_zero_fermi_energy(费米能平移为0后每条能带对应的能量)</th>
+    </tr>
+    <tr>
+        <td rowspan="3">band no.1</td>
+        <td>kpoint no.1</td>
+        <td>e_kp_1</td>
+        <td>e_kp_1-efermi</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td>kpoint no.n</td>
+        <td>e_kp_n</td>
+        <td>e_kp_n-efermi</td>
+    </tr>
+    <tr>
+        <td rowspan="3">band no...</td>
+        <td>kpoint no.1</td>
+        <td>e_kp_1</td>
+        <td>e_kp_1-efermi</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td>kpoint no.n</td>
+        <td>e_kp_n</td>
+        <td>e_kp_n-efermi</td>
+    </tr>
+</table></div>
+
+        <h4 id="spin和no-spin版本的区别"   >
+          <a href="#spin和no-spin版本的区别" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#spin和no-spin版本的区别"></a> spin和no spin版本的区别</h4>
+      
+<p>相较于no spin版本，spin版本的改动主要有以下几处：</p>
+<ul>
+<li>vasprun.xml文件读入时设置separate_spins=True</li>
+<li>读取能带能量时键为&quot;1&quot;的数据对应自旋向上，键为&quot;-1&quot;的数据对应自旋向下</li>
+<li>处理能带数据分为自旋向上和向下分别处理，新增两列。</li>
+</ul>
+
+        <h3 id="4数据后处理"   >
+          <a href="#4数据后处理" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#4数据后处理"></a> 4.数据后处理</h3>
+      
+<p>程序运行完成之后会生成两个文件：klabel.csv和bd.txt，其中klabel.csv文件存储的是每条分支能带的信息，包括每个高对称点处的坐标，可以用于后续画能带图。而bd.txt存储的就是每条能带上每个点的在X轴上的坐标和相应的能量大小。如下为一个示例：</p>
+<ul>
+<li>klabel.csv<br />
+<img src="/images/pythonbands/klabel.png" alt="klabel" /></li>
+<li>bd.txt<br />
+<img src="/images/pythonbands/bd.png" alt="bands" /><br />
+如下图是用origin通过以上数据绘制的能带图(将费米面平移到纵轴零值处)：<br />
+<img src="/images/pythonbands/originband.png" alt="originband" /><br />
+为了验证结果的正确性，这里同样调用pymatgen.electronic_structure.plotter库的相应函数自动绘制了能带图，结果如下，是一致的，说明了提取数据方法的正确性。<br />
+<img src="/images/pythonbands/pymatgenband.png" alt="pymatgenband" /></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2022/04/18/3c97dc7d7f77.html">https://june976.github.io/2022/04/18/3c97dc7d7f77.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/DFT/">DFT</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/VASP/">VASP</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/python3/">python3</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">￥打赏我￥</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/04/19/60c98299440f.html"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Bash脚本获取VASP能带计算数据</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/04/14/ba8ff0b84c20.html"><span class="paginator-prev__text">VASP中POTCAR使用指南</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">
+           1.准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E4%BD%BF%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">
+           2.使用脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E4%BB%A3%E7%A0%81%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">
+           3.简要介绍一下代码的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8Evasp%E5%8E%9F%E5%A7%8B%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6%E4%B8%AD%E8%AF%BB%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">3.1.</span> <span class="toc-text">
+           从vasp原始输出文件中读入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%B3%E9%94%AE%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">
+           获取关键变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E5%AF%B9%E5%BA%94%E7%9A%84k%E7%82%B9%E5%9D%90%E6%A0%87%E6%8A%95%E5%BD%B1%E5%88%B0x%E8%BD%B4%E4%B8%8A"><span class="toc-number">3.3.</span> <span class="toc-text">
+           将对应的K点坐标投影到X轴上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%86%E8%83%BD%E5%B8%A6%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">
+           将能带数据存入文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spin%E5%92%8Cno-spin%E7%89%88%E6%9C%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.5.</span> <span class="toc-text">
+           spin和no spin版本的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%95%B0%E6%8D%AE%E5%90%8E%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">
+           4.数据后处理</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">A Journey of A Thousand Miles Begins with A Single Step!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/HelloWorldTM?type=blog" target="_blank" rel="noopener" data-popover="social.CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="mailto:admin@jun997.xyz" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">M</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="https://mailchi.mp/78fbe8b89a13/juns-blog-subscribe" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email Subscribe</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/sitemap.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS Subscribe</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">57</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Rights Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Unique Visitor"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Page View"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

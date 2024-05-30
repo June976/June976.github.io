@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="zjHtMN5bFl4jkMXnYa-Qxnv5aCHi4hiWmq19dRvW9dE"><meta name="msvalidate.01" content="3FCE749E09FA739F3F8966641CE2F104"><meta name="baidu-site-verification" content="code-qK1Gt1cc5G"><meta name="description" content="前言        最近在学习中国大学mooc的计算机网络课程，主讲老师是哈工大的李全龙、聂兰顺老师，觉得关于IP协议部分讲的非常详细非常好，所以这里整理了一篇学习笔记，仅供参考，以下是课程慕课网的链接：https:&#x2F;&#x2F;www.icourse163.org&#x2F;course&#x2F;HIT-154005.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之ip协议">
+<meta property="og:url" content="https://june976.github.io/2021/06/11/6433a51cc760.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="前言        最近在学习中国大学mooc的计算机网络课程，主讲老师是哈工大的李全龙、聂兰顺老师，觉得关于IP协议部分讲的非常详细非常好，所以这里整理了一篇学习笔记，仅供参考，以下是课程慕课网的链接：https:&#x2F;&#x2F;www.icourse163.org&#x2F;course&#x2F;HIT-154005.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019120313031920.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvV29ybGRUTQ==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191203131344852.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvV29ybGRUTQ==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-06-11T14:07:00.000Z">
+<meta property="article:modified_time" content="2024-05-30T05:19:54.001Z">
+<meta property="article:author" content="Jun">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="windows编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019120313031920.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvV29ybGRUTQ==,size_16,color_FFFFFF,t_70"><title>计算机网络之ip协议 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2021/06/11/6433a51cc760.html"><link rel="alternate" href="/sitemap.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">About</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-sync"></i></span><span class="header-nav-menu-item__text">Next</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/Next/"><span class="header-nav-submenu-item__icon"><i class="fas fa-file-alt"></i></span><span class="header-nav-submenu-item__text">Doc</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://next.jun997.xyz/"><span class="header-nav-submenu-item__icon"><i class="fas fa-external-link-alt"></i></span><span class="header-nav-submenu-item__text">To</span></a></div></div></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">Share knowledges, Tell stories and Show something interesting!</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">计算机网络之ip协议</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2021-06-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon" data-popover="Visitors" data-popover-pos="up"><i class="fas fa-eye"></i></span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h1 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+      
+<p>最近在学习中国大学mooc的计算机网络课程，主讲老师是哈工大的李全龙、聂兰顺老师，觉得关于IP协议部分讲的非常详细非常好，所以这里整理了一篇学习笔记，仅供参考，以下是课程慕课网的链接：<span class="exturl"><a class="exturl__link"   href="https://www.icourse163.org/course/HIT-154005" >https://www.icourse163.org/course/HIT-154005</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</p>
+<span id="more"></span>
+
+        <h1 id="一-ip协议简介"   >
+          <a href="#一-ip协议简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#一-ip协议简介"></a> 一、IP协议简介</h1>
+      
+<p>IP协议是实现计算机网络通信的核心协议，基于IP协议的<strong>TCP/IP</strong>协议和<strong>UDP/IP</strong>协议是大部分计算机完成网络通信的基础协议，<mark>IP协议规定了任何接入公共互联网的设备都只能拥有唯一的IP，相当于每个接口的唯一身份识别ID</mark>，这样两台需要通信的设备，只需要知道了彼此的IP地址，就能保证信息通过路由准确无误地到达。</p>
+
+        <h1 id="二-ipv4协议"   >
+          <a href="#二-ipv4协议" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#二-ipv4协议"></a> 二、IPv4协议</h1>
+      
+
+        <h2 id="1-ip编址"   >
+          <a href="#1-ip编址" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1-ip编址"></a> 1、IP编址</h2>
+      
+<ul>
+<li>IPv4地址是由一串<mark>32比特</mark>的二进制数所表示，为了记忆地方便，一般<mark>以8比特为一组写成点分十进制地形式</mark>，例如：二进制IP地址<strong>10000000 00000000 00000000 00000001</strong>写成点分十进制形式就是<strong>128.0.0.1</strong>。</li>
+<li>为了方便划分子网，IP地址在内部又进行了划分，其中<strong>高位比特</strong>被称为<mark>网络号(NetID)</mark>，用于划分出一块一块地网络，而<strong>低位比特</strong>被称为<mark>主机号(HostID)</mark>，用于区分当前网络下地具体主机，例如对于IP地址<strong>10000000 00000000 00000000 00000001</strong>，如果前16比特是网络号，后16比特是主机号，我们可以说是处于<strong>128.0</strong>网络下的<strong>0.1</strong>号主机接口。</li>
+</ul>
+
+        <h2 id="2-有类ip地址"   >
+          <a href="#2-有类ip地址" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2-有类ip地址"></a> 2、有类IP地址</h2>
+      
+<p>有类IP地址的划分最初是为了解决IP地址的网络号和主机号的分配问题，具体来说，网络号占的比特位越多，能区分的网络数越多，但是相应的，能区分的主机数就会减少。因此为了解决<strong>不同网络规模下的IP地址分配问题</strong>，提出了有类IP地址分类。<br />
+具体分类方法采用二分法分类，分类形式如下：<br />
+<img   src="https://img-blog.csdnimg.cn/2019120313031920.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvV29ybGRUTQ==,size_16,color_FFFFFF,t_70" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGpx;"  alt="" /><br />
+以下是文字版：</p>
+<ul>
+<li><strong>A类地址(50%)：最高比特位是0，网络号占8比特，主机号占24比特</strong></li>
+<li><strong>B类地址(25%)：最高比特位是10，网络号占16比特，主机号占16比特</strong></li>
+<li><strong>C类地址(12.5%)：最高比特位是110，网络号占24比特，主机号占8比特</strong></li>
+<li><strong>D类地址(6.25%)：最高比特位是1110，不进行网络号和主机号的区分，特殊地址，用作多播和组播</strong></li>
+<li><strong>E类地址(6.25%)：最高比特位是1111，不进行网络号和主机号的区分，保留地址，用作研究</strong></li>
+</ul>
+<p>另外，在ABC三类IP地址中，还有一些特殊的IP地址，有特殊的用途，如下：<br />
+<img   src="https://img-blog.csdnimg.cn/20191203131344852.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGxvV29ybGRUTQ==,size_16,color_FFFFFF,t_70" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0hlbGpx;"  alt="" /><br />
+除了以上的特殊地址，ABC三类地址中还保留了一些<strong>私有地址</strong>，这类IP地址只能用于<strong>内部网络通信</strong>，在<strong>公共互联网</strong>是<mark>无效</mark>的，路由器也不会转发这类IP地址，这些地址对于公共互联网是不可见的，并且在<strong>不同局域网</strong>下这类地址可以<mark>复用</mark>。具体是：</p>
+<ul>
+<li><strong>A类：10.x.x.x</strong></li>
+<li><strong>B类：172.16.x.x  -  172.31.x.x</strong></li>
+<li><strong>C类：192.168.0.x - 192.168.255.x</strong></li>
+</ul>
+
+        <h2 id="3-子网划分"   >
+          <a href="#3-子网划分" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3-子网划分"></a> 3、子网划分</h2>
+      
+<ul>
+<li>
+<p>从以上IP地址分类可以看出，对于A类IP地址，其可以区分的网络数很少，但是区分的主机数却非常庞大，对于一个组织，如果分配了一个A类IP地址但是其主机数量有限，不能完全使用所有的主机号，那么势必造成IP地址的浪费，为了解决这一问题，就要求对子网作进一步的划分，<strong>子网掩码就是为了解决子网划分的问题</strong>。</p>
+</li>
+<li>
+<p>具体做法就是在原来IP地址的主机号的里面，重新拿出一部分比特位用作子网的划分，一般是将<strong>原来IP地址主机号的高位</strong>拿出几位作为<mark>子网号(SubID)</mark>。</p>
+</li>
+<li>
+<p>例如IP地址：<strong>10000000 00000000 00000000 00000001</strong> 属于B类地址，其前16位是网络号，为了进一步划分子网，我们可以在其剩余的16位主机号中指定几位，作为子网号，剩余位作为主机号。</p>
+</li>
+<li>
+<p>子网掩码是用作表示上述划分方式。在<strong>形式上于IP地址相同</strong>，<strong>表示为一串32比特的二进制数，可以表示成点分十进制的形式。在子网掩码中</strong>，<strong>原IP地址的对应网络号和子网号全部取1，主机号取0，就是对应的子网掩码。</strong></p>
+</li>
+<li>
+<p>例如IP地址：<strong><mark>10000000 00000000 00000000</mark> 00000001</strong>，如果我们用第17-24位进一步划分子网，那么其所对应的子网掩码就是：<strong>11111111 11111111 11111111 00000000</strong> ，对应的点分十进制形式就是<strong>255.255.255.0</strong> 。</p>
+</li>
+<li>
+<p>因此还可以知道，对于ABC三类IP地址，其默认的子网掩码为：</p>
+<ul>
+<li><strong>A类：<strong>255.0.0.0</strong></strong></li>
+<li><strong>B类：<strong>255.255.0.0</strong></strong></li>
+<li><strong>C类：<strong>255.255.255.0</strong></strong></li>
+</ul>
+</li>
+<li>
+<p>因此，通过IP地址和子网掩码，我们就可以完全确定某一个IP地址对应的子网大小，确定这个网络的规模，通过IP地址与子网掩码确定某一个网络，可以将32位IP地址与子网掩码做<strong>按位与</strong>运算，就可以提取出这个这个子网的子网地址。</p>
+</li>
+</ul>
+
+        <h1 id="三-cidr与路由聚集"   >
+          <a href="#三-cidr与路由聚集" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#三-cidr与路由聚集"></a> 三、CIDR与路由聚集</h1>
+      
+<ul>
+<li>
+<p><strong>CIDR</strong>全称是<strong>无类域间路由</strong>，是划分子网的一种新技术，打破了传统的A类、B类、C类地址的划分模式，CIDR将前面子网划分的网络号(NetID)和子网号(SubID)统称为一个<mark>网络前缀(Prefix)</mark>，并且可以是<strong>任意长度</strong>，例如对于IP地址：<strong><mark>10000000 0000000</mark>0 00000000 00000001</strong>我们想用前15位划分子网，那么采用CIDR方法划分就可以写作<strong>128.0.0.1/<mark>15</mark></strong>,上面就表示当前IP地址是使用IP地址前15位来划分的网络。</p>
+</li>
+<li>
+<p>值得一提的是，相对于传统的子网划分技术，CIDR技术能够大大提高<strong>IPv4地址空间的分配效率</strong>，以及这种层级的编址方式，使得<strong>路由寻址的效率大大提高</strong>。</p>
+</li>
+</ul>
+
+        <h1 id="四-ipv6协议简介"   >
+          <a href="#四-ipv6协议简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#四-ipv6协议简介"></a> 四、IPv6协议简介</h1>
+      
+<ul>
+<li>
+<p>IPv6协议可以认为是IPv4协议的升级，主要针对的是IPv4地址分配殆尽的问题。</p>
+</li>
+<li>
+<p>IPv6协议是使用<mark>128比特</mark>的二进制数表示地址，大大扩展了IPv4的地址空间，被形象的称为“<strong>可以为星球的每一个沙砾分配一个地址空间</strong>”。</p>
+</li>
+<li>
+<p>为了表示IPv6地址，<strong>采用的是冒号分割的16进制的地址表示形式，具体来说是将128比特的数分成8组</strong>，<strong>每一组包含16比特，用冒号分割，在每组中每4比特表示成一个16进制的数</strong>，<strong>其中前导0可以省略</strong>。例如以下就是一个典型的IPv6地址的表示：<strong>F00F:0:0:FFFF:A90F:F3:A:1</strong></p>
+</li>
+<li>
+<p>IPv6地址还支持<mark>压缩形式</mark>的写法，<strong>可以将多个连续的0用::表示</strong>。例如：<strong>FFFF:0:0:0:0:0:0:1可以表示为FFFF::1</strong> 。</p>
+</li>
+<li>
+<p>同时，为了<strong>兼容IPv4地址</strong>，<strong>IPv6特地将前80个比特全为0，后面16个比特全为1</strong>，<strong>接下来32比特为IPv4地址这样的地址空间专门用于和IPv4地址兼容的表示</strong>，例如对于IPv4地址<strong>128.0.0.1</strong>表示成IPv6的兼容形式是：<strong>0:0:0:0:0:FFFF:128.0.0.1</strong>，压缩形式是 ::FFFF:128.0.0.1。</p>
+</li>
+<li>
+<p>在IPv6网络中不再使用网络掩码的概念来划分子网，取而代之的是全部<strong>使用CIDR的形式来划分子网</strong>。例如F:1::1/46表示的就是用前46为来唯一标识网络。</p>
+</li>
+<li>
+<p>在url表示中，为了防止产生一些歧义，<strong>常常使用的是方括号将IPv6地址括起来的表示形式</strong>，例如http://[FFFF:A1:D3AF::1]:80。</p>
+</li>
+<li>
+<p>IPv6地址有三种基本类型：</p>
+<ul>
+<li>单播：一对一通信</li>
+<li>多播：一对多通信</li>
+<li>任意播：一对多(之一，最近的多播组成员)通信</li>
+</ul>
+</li>
+<li>
+<p>IPv4向IPv6过渡：隧道技术，同时支持IPv4和IPv6双协议的路由器。</p>
+</li>
+</ul>
+
+        <h1 id="五-tips"   >
+          <a href="#五-tips" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#五-tips"></a> 五、Tips</h1>
+      
+
+        <h2 id="1-windows查看ip地址的方法"   >
+          <a href="#1-windows查看ip地址的方法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1-windows查看ip地址的方法"></a> 1、Windows查看IP地址的方法</h2>
+      
+<p>按Win+R键，打开运行窗口，输入cmd，打开Windows控制台，输入<strong>ipconfig</strong>命令，就能查看当前ip地址。</p>
+
+        <h2 id="2-linux查看ip地址的方法"   >
+          <a href="#2-linux查看ip地址的方法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2-linux查看ip地址的方法"></a> 2、Linux查看ip地址的方法</h2>
+      
+<p>打开Linux控制台，输入<strong>ifconfig</strong>命令，就能查看IP地址。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2021/06/11/6433a51cc760.html">https://june976.github.io/2021/06/11/6433a51cc760.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/windows%E7%BC%96%E7%A8%8B/">windows编程</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">￥打赏我￥</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/11/54e7f0ffe0aa.html"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Windows下动态链接库和静态链接库的生成以及调用</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/11/0eb18d8780e7.html"><span class="paginator-prev__text">python3爬虫爬取当当网商品信息</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">
+           前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-ip%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">
+           一、IP协议简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-ipv4%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.</span> <span class="toc-text">
+           二、IPv4协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ip%E7%BC%96%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">
+           1、IP编址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9C%89%E7%B1%BBip%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.</span> <span class="toc-text">
+           2、有类IP地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86"><span class="toc-number">3.3.</span> <span class="toc-text">
+           3、子网划分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-cidr%E4%B8%8E%E8%B7%AF%E7%94%B1%E8%81%9A%E9%9B%86"><span class="toc-number">4.</span> <span class="toc-text">
+           三、CIDR与路由聚集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-ipv6%E5%8D%8F%E8%AE%AE%E7%AE%80%E4%BB%8B"><span class="toc-number">5.</span> <span class="toc-text">
+           四、IPv6协议简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94-tips"><span class="toc-number">6.</span> <span class="toc-text">
+           五、Tips</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-windows%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">
+           1、Windows查看IP地址的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-linux%E6%9F%A5%E7%9C%8Bip%E5%9C%B0%E5%9D%80%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">
+           2、Linux查看ip地址的方法</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">A Journey of A Thousand Miles Begins with A Single Step!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/HelloWorldTM?type=blog" target="_blank" rel="noopener" data-popover="social.CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="mailto:admin@jun997.xyz" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">M</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="https://mailchi.mp/78fbe8b89a13/juns-blog-subscribe" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email Subscribe</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/sitemap.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS Subscribe</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">57</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Rights Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Unique Visitor"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Page View"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>

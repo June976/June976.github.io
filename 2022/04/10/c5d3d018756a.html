@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/favicon/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/favicon/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/images/favicon/apple-touch-icon.png?v=2.6.2" sizes="180x180"><link rel="mask-icon" href="/images/favicon/safari_pinned_tab.svg?v=2.6.2" color="#54bcff"><meta name="msapplication-TileImage" content="/images/favicon/mstile-150x150.png"><meta name="msapplication-TileColor" content="#000000"><meta name="google-site-verification" content="zjHtMN5bFl4jkMXnYa-Qxnv5aCHi4hiWmq19dRvW9dE"><meta name="msvalidate.01" content="3FCE749E09FA739F3F8966641CE2F104"><meta name="baidu-site-verification" content="code-qK1Gt1cc5G"><meta name="description" content="介绍        Materials Project是一个开放的材料数据库，她提供了很多理论预测和实验上观察到的材料的计算性质，并且以网页的形式提供了查询的接口。最近Materials Project官方网站消息显示即将迎来新版本，同时也推出了新版本的预览版。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新版和老版Materials Project API使用指南">
+<meta property="og:url" content="https://june976.github.io/2022/04/10/c5d3d018756a.html">
+<meta property="og:site_name" content="Jun&#39;s Blog">
+<meta property="og:description" content="介绍        Materials Project是一个开放的材料数据库，她提供了很多理论预测和实验上观察到的材料的计算性质，并且以网页的形式提供了查询的接口。最近Materials Project官方网站消息显示即将迎来新版本，同时也推出了新版本的预览版。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://june976.github.io/images/matproj/old-homepage.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/new-homepage.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/old-key.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/new-key.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/old-result.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/difference.png">
+<meta property="og:image" content="https://june976.github.io/images/matproj/new-result.png">
+<meta property="article:published_time" content="2022-04-10T17:42:47.000Z">
+<meta property="article:modified_time" content="2024-05-30T05:19:54.001Z">
+<meta property="article:author" content="Jun">
+<meta property="article:tag" content="DFT">
+<meta property="article:tag" content="python3">
+<meta property="article:tag" content="Materials Project">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://june976.github.io/images/matproj/old-homepage.png"><title>新版和老版Materials Project API使用指南 | Jun's Blog</title><link ref="canonical" href="https://june976.github.io/2022/04/10/c5d3d018756a.html"><link rel="alternate" href="/sitemap.xml" type="application/atom+xml"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://hm.baidu.com"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?eb65d34678c3ed9f0d7fada1c3991648';
+  hm.async = true;
+
+  if (false) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":8},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-user"></i></span><span class="header-nav-menu-item__text">About</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-sync"></i></span><span class="header-nav-menu-item__text">Next</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/Next/"><span class="header-nav-submenu-item__icon"><i class="fas fa-file-alt"></i></span><span class="header-nav-submenu-item__text">Doc</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="https://next.jun997.xyz/"><span class="header-nav-submenu-item__icon"><i class="fas fa-external-link-alt"></i></span><span class="header-nav-submenu-item__text">To</span></a></div></div></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Jun's Blog</div><div class="header-banner-info__subtitle">Share knowledges, Tell stories and Show something interesting!</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">新版和老版Materials Project API使用指南</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2022-04-10</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2024-05-30</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon" data-popover="Visitors" data-popover-pos="up"><i class="fas fa-eye"></i></span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h3 id="介绍"   >
+          <a href="#介绍" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h3>
+      
+<p><span class="exturl"><a class="exturl__link"   href="https://en.wikipedia.org/wiki/Materials_Project" >Materials Project</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>是一个开放的材料数据库，她提供了很多理论预测和实验上观察到的材料的<strong>计算性质</strong>，并且以网页的形式提供了查询的接口。最近Materials Project官方网站消息显示即将迎来新版本，同时也推出了新版本的预览版。<span id="more"></span>以下分别是老版和新版（预览）的地址和首页：</p>
+<ul>
+<li>老版：<span class="exturl"><a class="exturl__link"   href="https://materialsproject.org/" >https://materialsproject.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br />
+<img src="/images/matproj/old-homepage.png" alt="old-homepage" /></li>
+<li>新版：<span class="exturl"><a class="exturl__link"   href="https://next-gen.materialsproject.org/" >https://next-gen.materialsproject.org/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br />
+<img src="/images/matproj/new-homepage.png" alt="new-homepage" /></li>
+</ul>
+
+        <h3 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#前言"></a> 前言</h3>
+      
+<p>最近闲来无事，又捣鼓起来了Materials Project，主要是想要利用Materials Project提供的API来批量获取某些材料的某些性质，然后训练和测试一些简单的模型。由于之前使用过老版的API，所以对于老版的API调用还是比较熟悉的，但是新版之前没有使用过，花了一天时间探索之后，发现新版和老版的API调用上既有相同的地方，也有不同的地方，所以这里打算写一篇文章来简单地探讨一下，同时也可以作为入门的快速指南。当然值得一提的是，Materials Project本身博大精深，包含材料各个方面的数据，这篇文章的内容只是<strong>初窥一隅</strong>。</p>
+
+        <h3 id="前期准备"   >
+          <a href="#前期准备" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#前期准备"></a> 前期准备</h3>
+      
+<p>不管是新版还是老版的Materials Project，要调用首先需要获取API Key,获取方式大同小异，首先用账号登录网站，然后在Dashboard页面生成API Key，如下图：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th><img src="/images/matproj/old-key.png" alt="old-key" /></th>
+<th><img src="/images/matproj/new-key.png" alt="new-key" /></th>
+</tr>
+</thead>
+</table></div>
+
+        <h3 id="老版api调用"   >
+          <a href="#老版api调用" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#老版api调用"></a> 老版API调用</h3>
+      
+
+        <h4 id="1mprester类简介"   >
+          <a href="#1mprester类简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1mprester类简介"></a> 1.MPRester类简介</h4>
+      
+<p>老版API调用方法已经加入到了<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/index.html" >Pymatgen</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>的模块之中，Pymatgen是一个高通量计算的Python模块，几乎所有的API调用过程都是通过<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/pymatgen.ext.matproj.html" >pymatgen.ext.matproj</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>模块下的<strong>MPRester类</strong>来实现的。<strong>MPRester类</strong>有四个参数：</p>
+<ul>
+<li><strong>api_key</strong>：字符串类型，传入之前获得的API Key</li>
+<li><strong>endpoint</strong>：字符串类型，传入访问数据库的入口url</li>
+<li><strong>notify_db_version</strong>：布尔类型，决定是否将访问时获得的数据库版本信息记录在本地文件中</li>
+<li><strong>include_user_agent</strong>：布尔类型，决定在发送HTTP请求时是否发送pymatgen版本信息和访问设备信息</li>
+</ul>
+
+        <h4 id="2mprester类的一些常用函数简介"   >
+          <a href="#2mprester类的一些常用函数简介" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2mprester类的一些常用函数简介"></a> 2.MPRester类的一些常用函数简介</h4>
+      
+<p>MPRester类封装了几乎所有调用数据库的函数，以下对一些比较常用的函数做一些说明：</p>
+<ul>
+<li><strong>get_bandstructure_by_material_id(material_id, line_mode=True)</strong>：根据material_id获取能带结构</li>
+</ul>
+<blockquote>
+<p>note：Materials Project中每个材料都对应一个唯一的id，相当于材料的身份证号码，知道了material id就能通过调用函数来获取材料的所有数据</p>
+</blockquote>
+<ul>
+<li><strong>get_doc(materials_id)</strong>：根据mp-id获取材料<strong>所有的数据</strong>的文档，json格式的文档</li>
+<li><strong>get_dos_by_material_id(material_id)</strong>：根据mp-id获取材料的态密度</li>
+<li><strong>get_phonon_bandstructure_by_material_id(material_id)</strong>：根据mp-id获取材料的声子谱</li>
+<li><strong>get_phonon_dos_by_material_id(material_id)</strong>：根据mp-id获取材料的声子态密度</li>
+<li><strong>get_entries(chemsys_formula_id_criteria, compatible_only=True, inc_structure=None, property_data=None, conventional_unit_cell=False, sort_by_e_above_hull=False)</strong>：根据化学系统、化学式、mp-id或所有的标准获取相应材料的<span class="exturl"><a class="exturl__link"   href="https://pymatgen.org/pymatgen.entries.computed_entries.html" >计算数据</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>列表</li>
+<li><strong>get_entries_in_chemsys(elements, compatible_only=True, inc_structure=None, property_data=None, conventional_unit_cell=False)</strong>：衍生自get_entries函数，获取化学系统的的计算数据</li>
+<li><strong>get_entry_by_material_id(material_id, compatible_only=True, inc_structure=None, property_data=None, conventional_unit_cell=False)</strong>：同上</li>
+<li><strong>get_structure_by_material_id(material_id, final=True, conventional_unit_cell=False)</strong>：根据mp-id获取材料的结构</li>
+<li><strong>get_structures(chemsys_formula_id, final=True)</strong>：根据化学组成获取结构列表</li>
+</ul>
+
+        <h4 id="3mprester类的两个重要函数"   >
+          <a href="#3mprester类的两个重要函数" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3mprester类的两个重要函数"></a> 3.MPRester类的两个重要函数：</h4>
+      
+
+        <h5 id="get_materials_idschemsys_formula"   >
+          <a href="#get_materials_idschemsys_formula" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#get_materials_idschemsys_formula"></a> get_materials_ids(chemsys_formula)</h5>
+      
+<p>该函数提供了根据对应化学式获取相应的mp-id的功能，可以用于搜索特定组成或化学式的材料在Materials Project中的mp-id，<strong>chemsys_formula</strong>参数为字符串类型，可以是指定元素类别，如&quot;Fe-Li-O&quot;表示获取所有包含Li、Fe、O三种元素的材料的mp-id；也可以是指定化学式，如&quot;Fe2O3&quot;表示获取所有化学式为Fe2O3的材料的mp-id，该函数返回列表类型，列表中包含了所有的mp-id。</p>
+
+        <h5 id="get_datachemsys_formula_id-data_typevasp-prop"   >
+          <a href="#get_datachemsys_formula_id-data_typevasp-prop" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#get_datachemsys_formula_id-data_typevasp-prop"></a> get_data(chemsys_formula_id, data_type=‘vasp’, prop=‘’)</h5>
+      
+<p>不同于之前一次性获取材料的所有数据，该函数能够灵活地获得某一材料地某个（些）特定数据，其有三个关键参数：</p>
+<ul>
+<li><strong>chemsys_formula_id</strong>：字符串类型，传入对应材料的元素组成，化学式或者mp-id</li>
+<li><strong>data_type</strong>：返回的数据类型，可以传入&quot;vasp&quot;或&quot;exp&quot;</li>
+<li><strong>prop</strong>：需要获取的数据，字符串类型，可以填入的参数为(‘energy’, ‘energy_per_atom’, ‘volume’, ‘formation_energy_per_atom’, ‘nsites’, ‘unit_cell_formula’, ‘pretty_formula’, ‘is_hubbard’, ‘elements’, ‘nelements’, ‘e_above_hull’, ‘hubbards’, ‘is_compatible’, ‘spacegroup’, ‘band_gap’, ‘density’, ‘icsd_id’, ‘cif’)，如果为空即为获取部分常用的性质数据。</li>
+</ul>
+
+        <h4 id="4代码实战"   >
+          <a href="#4代码实战" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#4代码实战"></a> 4.代码实战</h4>
+      
+<p>下面为实际调用的python代码，完成的是获取所有不同结构的Si单质对应的mp-id，然后根据mp-id获取对应材料的一些性质。</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymatgen.ext.matproj <span class="keyword">import</span> MPRester</span><br><span class="line"></span><br><span class="line">my_api_key = <span class="string">&quot;your api key&quot;</span></span><br><span class="line"><span class="keyword">with</span> MPRester(api_key=my_api_key) <span class="keyword">as</span> mpr:</span><br><span class="line">    ls_mat_ids = mpr.get_materials_ids(chemsys_formula=<span class="string">&quot;Si&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> mat_id <span class="keyword">in</span> ls_mat_ids:</span><br><span class="line">        mat_info = []</span><br><span class="line">        mat_formula = mpr.get_data(chemsys_formula_id=mat_id, prop=<span class="string">&quot;pretty_formula&quot;</span>)</span><br><span class="line">        mat_spacegroup = mpr.get_data(chemsys_formula_id=mat_id, prop=<span class="string">&quot;spacegroup&quot;</span>)</span><br><span class="line">        mat_band_gap = mpr.get_data(chemsys_formula_id=mat_id, prop=<span class="string">&quot;band_gap&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(mat_id, mat_formula[<span class="number">0</span>][<span class="string">&#x27;pretty_formula&#x27;</span>], mat_spacegroup[<span class="number">0</span>][<span class="string">&#x27;spacegroup&#x27;</span>][<span class="string">&#x27;symbol&#x27;</span>], mat_band_gap[<span class="number">0</span>][<span class="string">&#x27;band_gap&#x27;</span>])</span><br></pre></td></tr></table></div></figure>
+<p>以下为运行结果：<br />
+<img src="/images/matproj/old-result.png" alt="old-result" /></p>
+
+        <h3 id="新版api调用"   >
+          <a href="#新版api调用" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#新版api调用"></a> 新版API调用</h3>
+      
+<p>新版本Materials Project在API调用上与老版本既有相同的地方，也有不同的地方。<span class="exturl"><a class="exturl__link"   href="https://next-gen.materialsproject.org/api" >官网手册</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>上对二者作了对比：<img src="/images/matproj/difference.png" alt="difference" /></p>
+
+        <h4 id="1安装mp-api包"   >
+          <a href="#1安装mp-api包" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#1安装mp-api包"></a> 1.安装mp-api包</h4>
+      
+<p>首先一个显著不同的是，新版本Materials Project在调用上使用的是Python的mp-api模块，这一模块并不包含在pymatgen中（官网补充说明：可能之后会并入pymatgen），而是作为独立的模块，需要重新安装，安装非常容易，使用pip工具就可以：</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mp-api</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="2mprester类的框架"   >
+          <a href="#2mprester类的框架" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#2mprester类的框架"></a> 2.MPRester类的框架</h4>
+      
+<p>与老版本一样，具体的调用函数是封装在MPRester类中的。不同的是，新版中将材料的各个性质分别封装在各个子类中，做了进一步的归档，需要查询某个性质时可以通过这些子类提供的函数来做进一步的查询，具体有：</p>
+<ul>
+<li><strong>bonds</strong>：包含根据pymatgen中定义的近邻策略计算的化学键信息</li>
+<li><strong>charge_density</strong>：包含材料的电荷密度信息</li>
+<li><strong>dielectric</strong>：包含材料的介电性质</li>
+<li><strong>doi</strong>：特定材料的参考文献的doi</li>
+<li><strong>elasticity</strong>：包含材料的弹性数据</li>
+<li><strong>electronic_structure</strong>：包含材料的核心电子结构信息</li>
+<li><strong>eos</strong>：能量-体积状态的拟合方程</li>
+<li><strong>fermi</strong>：材料的费米面信息</li>
+<li><strong>grain_boundary</strong>：包含晶界能，解离能</li>
+<li><strong>insertion_electrodes</strong>：插入的电极</li>
+<li><strong>magnetism</strong>：从计算结果中得到的磁性数据</li>
+<li><strong>materials</strong>：包含材料的一些核心信息</li>
+<li><strong>molecules</strong>：与电池电解质相关的分子</li>
+<li><strong>oxidation_states</strong>：根据结构计算的氧化态</li>
+<li><strong>phonon</strong>：声子谱和声子态密度数据</li>
+<li><strong>piezoelectric</strong>：材料的介电信息</li>
+<li><strong>provenance</strong>：提供材料的证明材料，主要包括材料是否是理论预测的，相关的ICSD id，所在的参考文献</li>
+<li><strong>robocrys</strong>：提供材料的机器人晶体学家(???)描述信息</li>
+<li><strong>similarity</strong>：包含相似结构的信息数据</li>
+<li><strong>substrates</strong>：给定材料的可能生长基底的信息</li>
+<li><strong>summary</strong>：有关材料及其属性的摘要信息，较为常用</li>
+<li><strong>surface_properties</strong>：包含材料的表面性质相关的信息</li>
+<li><strong>synthesis</strong>：包含材料的合成配方数据和附加关键字的搜索结果信息</li>
+<li><strong>tasks</strong>：为Materials Project提供数据的相关VASP计算的详细信息</li>
+<li><strong>thermo</strong>：与热相关的性质</li>
+<li><strong>xas</strong>：包含XAS谱的相关信息</li>
+</ul>
+
+        <h4 id="3子类的相关函数调用"   >
+          <a href="#3子类的相关函数调用" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#3子类的相关函数调用"></a> 3.子类的相关函数调用</h4>
+      
+<p>这些子类提供的调用方法又各有不同，传入的参数也有所差别，具体使用时需要参考<span class="exturl"><a class="exturl__link"   href="https://api.materialsproject.org/docs#/" >官方文档</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>。由于我在使用时只用到了这两个子类：<strong>summary</strong>和<strong>materials</strong>，所以以下详细介绍这两个子类。</p>
+
+        <h5 id="summary子类"   >
+          <a href="#summary子类" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#summary子类"></a> summary子类</h5>
+      
+<p>以下引自官网：summary提供了某一材料的合并数据，整合了很多其它子类包含的性质，当材料的性质空间包含很多时，使用summary非常有效，<strong>注意Materials Project中每个材料都有一份独一无二的summary文档</strong>。summary子类中常用的函数有两个，即：get_data_by_id和search_summary_docs,下面分别介绍：</p>
+<ul>
+<li>get_data_by_id：包含三个参数，material_id(必要)、fields和all_fields，其中fields是一串以逗号分隔的字符串，说明需要获取的summary文档中需要包含的性质，具体的字段有：<strong>builder_meta nsites elements nelements composition composition_reduced formula_pretty formula_anonymous chemsys volume density density_atomic symmetry property_name material_id deprecated deprecation_reasons last_updated origins warnings structure task_ids uncorrected_energy_per_atom energy_per_atom formation_energy_per_atom energy_above_hull is_stable equilibrium_reaction_energy_per_atom decomposes_to xas grain_boundaries band_gap cbm vbm efermi is_gap_direct is_metal es_source_calc_id bandstructure dos dos_energy_up dos_energy_down is_magnetic ordering total_magnetization total_magnetization_normalized_vol total_magnetization_normalized_formula_units num_magnetic_sites num_unique_magnetic_sites types_of_magnetic_species k_voigt k_reuss k_vrh g_voigt g_reuss g_vrh universal_anisotropy homogeneous_poisson e_total e_ionic e_electronic n e_ij_max weighted_surface_energy_EV_PER_ANG2 weighted_surface_energy weighted_work_function surface_anisotropy shape_factor has_reconstructed possible_species has_props theoretical</strong>，具体含义可以参考英文意义和网站上展示的数据来理解，这里需要特别说明的一点是：<mark>相比于老版，新版Materials Project对材料作了是否实验上观察到的划分，并且设置了一个变量来指示，因此可以非常容易知道哪些是实验上已经合成出来的，这个变量就是以上fields中的theoretical字段，是布尔值，True表示材料是理论预测的，False表示材料已经实验观察到了</mark>。最后一个参数是布尔类型，如果设置为True，那么请求的summary文档会包含以上所有性质。</li>
+<li>search_summary_docs：其包含的参数非常多，具体参考<span class="exturl"><a class="exturl__link"   href="https://api.materialsproject.org/docs#/Summary/search_summary__get" >官网</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>,其中一些常用的参数formula、chemsys、crystal_system分别为指定化学式、化学成分和晶系来搜索对应的文档，其它参数用到可以再具体查询。</li>
+</ul>
+
+        <h5 id="materials子类"   >
+          <a href="#materials子类" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#materials子类"></a> materials子类</h5>
+      
+<p>以下引自官网：materials提供了材料在Materials Project数据库中的核心信息，其中mp-id是材料的唯一标识符，这里核心信息指：晶体结构、密度、化学式以及与计算相关的task_id,不包含形成能和带隙等信息。和summary子类一样，其较为核心的同样是以上提到的两个函数，并且传入的参数也类似，这里不再赘述，值得一提的是，这里的fields参数包含的字段相对于summary中更少，具体是：<strong>builder_meta nsites elements nelements composition composition_reduced formula_pretty formula_anonymous chemsys volume density density_atomic symmetry material_id structure deprecated deprecation_reasons initial_structures task_ids deprecated_tasks calc_types last_updated created_at origins warnings</strong>。</p>
+
+        <h4 id="4note"   >
+          <a href="#4note" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#4note"></a> 4.note</h4>
+      
+<p>当然，新版的MPRester类中也提供了一些不需要通过子类来调用的函数，这些函数的用法大都与老版的相应同名函数的用法相同，如get_materials_ids函数、get_data函数等。</p>
+
+        <h4 id="5代码实战"   >
+          <a href="#5代码实战" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#5代码实战"></a> 5.代码实战</h4>
+      
+<p>这里的代码完成的同样是获取不同结构Si单质的相应数据，同时添加了新版的一个新的特性，即判断材料是否实验上观察到。以下为代码：</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mp_api <span class="keyword">import</span> MPRester</span><br><span class="line"></span><br><span class="line">my_api_key = <span class="string">&quot;your api key&quot;</span></span><br><span class="line"><span class="keyword">with</span> MPRester(api_key=my_api_key) <span class="keyword">as</span> mpr:</span><br><span class="line">    ls_mat_ids = mpr.get_materials_ids(chemsys_formula=<span class="string">&quot;Si&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> mat_id <span class="keyword">in</span> ls_mat_ids:</span><br><span class="line">        mat_summary = mpr.summary.get_data_by_id(mat_id,fields=<span class="string">&quot;formula_pretty,symmetry,band_gap,theoretical&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(mat_id, mat_summary.formula_pretty, mat_summary.symmetry.symbol, mat_summary.band_gap, mat_summary.theoretical)</span><br></pre></td></tr></table></div></figure>
+<p>以下为代码的运行结果：<img src="/images/matproj/new-result.png" alt="new-result" /></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://june976.github.io">Jun</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://june976.github.io/2022/04/10/c5d3d018756a.html">https://june976.github.io/2022/04/10/c5d3d018756a.html</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/DFT/">DFT</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/python3/">python3</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://june976.github.io/tags/Materials-Project/">Materials Project</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">￥打赏我￥</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="/images/PayQRCode/alipay.jpg"><div class="reward-qrcode-alipay__text">Alipay</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="/images/PayQRCode/wechat.png"><div class="reward-qrcode-wechat__text">Wechat</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/04/14/ba8ff0b84c20.html"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">VASP中POTCAR使用指南</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/04/05/059c2c33a8da.html"><span class="paginator-prev__text">庆祝本站从Github Page绑定到新的域名</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">
+           介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">
+           前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">
+           前期准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%81%E7%89%88api%E8%B0%83%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">
+           老版API调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1mprester%E7%B1%BB%E7%AE%80%E4%BB%8B"><span class="toc-number">4.1.</span> <span class="toc-text">
+           1.MPRester类简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2mprester%E7%B1%BB%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E7%AE%80%E4%BB%8B"><span class="toc-number">4.2.</span> <span class="toc-text">
+           2.MPRester类的一些常用函数简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3mprester%E7%B1%BB%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E5%87%BD%E6%95%B0"><span class="toc-number">4.3.</span> <span class="toc-text">
+           3.MPRester类的两个重要函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#get_materials_idschemsys_formula"><span class="toc-number">4.3.1.</span> <span class="toc-text">
+           get_materials_ids(chemsys_formula)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#get_datachemsys_formula_id-data_typevasp-prop"><span class="toc-number">4.3.2.</span> <span class="toc-text">
+           get_data(chemsys_formula_id, data_type&#x3D;‘vasp’, prop&#x3D;‘’)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="toc-number">4.4.</span> <span class="toc-text">
+           4.代码实战</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%89%88api%E8%B0%83%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">
+           新版API调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E5%AE%89%E8%A3%85mp-api%E5%8C%85"><span class="toc-number">5.1.</span> <span class="toc-text">
+           1.安装mp-api包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2mprester%E7%B1%BB%E7%9A%84%E6%A1%86%E6%9E%B6"><span class="toc-number">5.2.</span> <span class="toc-text">
+           2.MPRester类的框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E5%AD%90%E7%B1%BB%E7%9A%84%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8"><span class="toc-number">5.3.</span> <span class="toc-text">
+           3.子类的相关函数调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#summary%E5%AD%90%E7%B1%BB"><span class="toc-number">5.3.1.</span> <span class="toc-text">
+           summary子类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#materials%E5%AD%90%E7%B1%BB"><span class="toc-number">5.3.2.</span> <span class="toc-text">
+           materials子类</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4note"><span class="toc-number">5.4.</span> <span class="toc-text">
+           4.note</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="toc-number">5.5.</span> <span class="toc-text">
+           5.代码实战</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/profile.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">A Journey of A Thousand Miles Begins with A Single Step!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/June976" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.google.com/" target="_blank" rel="noopener" data-popover="Google" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-google"></i></span></a><a class="sidebar-ov-social-item" href="https://weibo.com/" target="_blank" rel="noopener" data-popover="Weibo" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weibo"></i></span></a><a class="sidebar-ov-social-item" href="https://www.zhihu.com/" target="_blank" rel="noopener" data-popover="Zhihu" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">知</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/HelloWorldTM?type=blog" target="_blank" rel="noopener" data-popover="social.CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">C</span></a><a class="sidebar-ov-social-item" href="mailto:admin@jun997.xyz" target="_blank" rel="noopener" data-popover="social.QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">M</span></a></div><div class="sidebar-ov-feed"><span class="sidebar-ov-feed-email"><a class="sidebar-ov-feed-email__link" href="https://mailchi.mp/78fbe8b89a13/juns-blog-subscribe" target="_blank" rel="noopener"><span class="sidebar-ov-feed-email__icon"><i class="fas fa-envelope"></i></span><span>Email Subscribe</span></a></span><span class="sidebar-ov-feed-rss"><a class="sidebar-ov-feed-rss__link" href="/sitemap.xml" target="_blank" rel="noopener"><span class="sidebar-ov-feed-rss__icon"><i class="fas fa-rss"></i></span><span>RSS Subscribe</span></a></span></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">57</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">34</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2024</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Jun All Rights Reserved</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v5.4.1</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Unique Visitor"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon" data-popover-pos="up" data-popover="Page View"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
